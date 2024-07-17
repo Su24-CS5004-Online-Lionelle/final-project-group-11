@@ -27,9 +27,11 @@
 	    •	Add methods in ItemModel to fetch data from an online API, and call ItemController to update ItemModel.
 	6.	Include Item Images
 	    •	Display item thumbnails in ResultsPanel and ItemDetailPanel.
+        
 	7.	Modify Local Item Copy
 	    •	Use methods in ItemController to update items in ItemModel and persist the modifications.
 	8.	Display Temporal Data
+
 	    •	If items have temporal data, use timeline components in ItemDetailPanel to display them.
 
 ![demo](DesignDocuments/Ux_demo/demo.png)
