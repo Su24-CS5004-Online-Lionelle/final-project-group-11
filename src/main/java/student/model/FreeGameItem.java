@@ -1,6 +1,10 @@
 package student.model;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 import java.util.Objects;
@@ -8,6 +12,11 @@ import java.util.Objects;
 /**
  * A class represents a free game item with various attributes such as title, genre, platform, etc.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JacksonXmlRootElement(localName = "Games")
+@JsonPropertyOrder({"id", "title", "thumbnail", "short_description", "game_url", "genre",
+        "platform", "publisher", "developer", "release_date", "freetogame_profile_url"})
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class FreeGameItem {
     /** The unique identifier of the game item. */
     private final int id;
@@ -57,9 +66,19 @@ public class FreeGameItem {
      * @param releaseDate         the release date of the game
      * @param freetogameProfileUrl the URL to the game's profile on the FreeToGame website
      */
-    public FreeGameItem(int id, String title, String thumbnail, String shortDescription, String gameUrl,
-                        String genre, String platform, String publisher, String developer, String releaseDate,
-                        String freetogameProfileUrl) {
+
+    @JsonCreator
+    public FreeGameItem(@JsonProperty("id") int id,
+                        @JsonProperty("title")String title,
+                        @JsonProperty("thumbnail")String thumbnail,
+                        @JsonProperty("short_description") String shortDescription,
+                        @JsonProperty("game_url") String gameUrl,
+                        @JsonProperty("genre") String genre,
+                        @JsonProperty("platform") String platform,
+                        @JsonProperty("publisher") String publisher,
+                        @JsonProperty("developer") String developer,
+                        @JsonProperty("release_date") String releaseDate,
+                        @JsonProperty("freetogame_profile_url") String freetogameProfileUrl) {
         this.id = id;
         this.title = title;
         this.thumbnail = thumbnail;
