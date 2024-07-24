@@ -5,8 +5,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import student.model.ItemModel;
-import student.model.ItemModel.GamesRecord;
+import student.model.FreeGameItem;
 
 import javax.annotation.Nonnull;
 import java.io.IOException;
@@ -28,9 +27,9 @@ public class Display {
      * @param records the records to print
      * @param out the output stream to write to
      */
-    private static void prettyPrint(Collection<GamesRecord> records, OutputStream out) {
+    private static void prettyPrint(Collection<FreeGameItem> records, OutputStream out) {
         PrintStream pout = new PrintStream(out);
-        for (GamesRecord record : records) {
+        for (FreeGameItem record : records) {
             prettySingle(record, pout);
             pout.println();
         }
@@ -42,18 +41,18 @@ public class Display {
      * @param record the record to print
      * @param out the output stream to write to
      */
-    private static void prettySingle(@Nonnull GamesRecord record, @Nonnull PrintStream out) {
-        out.println(record.title());
-        out.println("             ID: " + record.id());
-        out.println("             Short Description: " + record.shortDescription());
-        out.println("             Genre: " + record.genre());
-        out.println("             Platform: " + record.platform());
-        out.println("             Publisher: " + record.publisher());
-        out.println("             Developer: " + record.developer());
-        out.println("             Release Date: " + record.releaseDate());
-        out.println("             Thumbnail URL: " + record.thumbnail());
-        out.println("             Game URL: " + record.gameUrl());
-        out.println("             freetogame ProfileURL: " + record.freetogameProfileUrl());
+    private static void prettySingle(@Nonnull FreeGameItem record, @Nonnull PrintStream out) {
+        out.println(record.getTitle());
+        out.println("             ID: " + record.getId());
+        out.println("             Short Description: " + record.getShortDescription());
+        out.println("             Genre: " + record.getGenre());
+        out.println("             Platform: " + record.getPlatform());
+        out.println("             Publisher: " + record.getPublisher());
+        out.println("             Developer: " + record.getDeveloper());
+        out.println("             Release Date: " + record.getReleaseDate());
+        out.println("             Thumbnail URL: " + record.getThumbnail());
+        out.println("             Game URL: " + record.getGameUrl());
+        out.println("             freetogame ProfileURL: " + record.getFreetogameProfileUrl());
 
     }
 
@@ -62,7 +61,7 @@ public class Display {
      * @param records the records to write
      * @param out the output stream to write to
      */
-    private static void writeXmlData(Collection<GamesRecord> records, OutputStream out) {
+    private static void writeXmlData(Collection<FreeGameItem> records, OutputStream out) {
         XmlMapper mapper = new XmlMapper();
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
         XmlWrapper wrapper = new XmlWrapper(records);
@@ -79,7 +78,7 @@ public class Display {
      * @param records the records to write
      * @param out the output stream to write to
      */
-    private static void writeJsonData(Collection<GamesRecord> records, OutputStream out) {
+    private static void writeJsonData(Collection<FreeGameItem> records, OutputStream out) {
         ObjectMapper mapper = new ObjectMapper();
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
         try {
@@ -94,9 +93,9 @@ public class Display {
      * @param records the records to write
      * @param out the output stream to write to
      */
-    private static void writeCSVData(Collection<GamesRecord> records, OutputStream out) {
+    private static void writeCSVData(Collection<FreeGameItem> records, OutputStream out) {
         CsvMapper mapper = new CsvMapper();
-        CsvSchema schema = mapper.schemaFor(ItemModel.GamesRecord.class).withHeader();
+        CsvSchema schema = mapper.schemaFor(FreeGameItem.class).withHeader();
         try {
             mapper.writer(schema).writeValue(out, records);
         } catch (IOException e) {
@@ -110,7 +109,7 @@ public class Display {
      * @param format the format to write the records in
      * @param out the output stream to write to
      */
-    public static void write(@Nonnull Collection<GamesRecord> records, @Nonnull Formats format,
+    public static void write(@Nonnull Collection<FreeGameItem> records, @Nonnull Formats format,
                              @Nonnull OutputStream out) {
 
         switch (format) {
