@@ -99,7 +99,10 @@ public class ItemModelImpl implements ItemModel{
 
 
     public static void main(String[] args) throws Exception {
-        GamesDatabase instance = new GamesDatabase(); // creates the json database.
+        File file = new File(DATABASE);
+        if (file.exists() & file.length() == 0) {
+            GamesDatabase instance = new GamesDatabase(); // creates the json database.
+        }
         //(To check if it creates the database, clear the contents of the database).
         ItemModelImpl ItemModelObj = new ItemModelImpl(); //creates the instance of this class.
         ItemModelObj = ItemModelObj.getInstance(DATABASE); //creates the new instance and a record.
