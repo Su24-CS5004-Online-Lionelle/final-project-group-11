@@ -3,7 +3,7 @@ package student.model.formatters;
 import java.util.Collection;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-import student.model.ItemModel.GamesRecord;
+import student.model.FreeGameItem;
 
 /**
  * This wrapper helps when using Jackson to serialize a list of domain records to xml.
@@ -21,13 +21,13 @@ public final class XmlWrapper {
 
     /** List of the records. */
     @JacksonXmlElementWrapper(useWrapping = false)
-    private Collection<GamesRecord> games;
+    private Collection<FreeGameItem> games;
 
     /**
      * Constructor.
      * @param games the records to wrap
      */
-    public XmlWrapper(Collection<GamesRecord> games) {
+    public XmlWrapper(Collection<FreeGameItem> games) {
         this.games = games;
     }
 }
