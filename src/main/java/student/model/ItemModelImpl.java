@@ -21,7 +21,7 @@ public class ItemModelImpl implements ItemModel{
     private List<FreeGameItem> gameList;
 
     /** HashMap that contains the game name as key and record as value. */
-    private Map<String, ItemModel.GamesRecord> gamesMap = new HashMap<>();
+    private Map<String, FreeGameItem> gamesMap = new HashMap<>();
 
     /** Variable to hold the database path. */
     private static final String DATABASE = "data/freegamerecords.json";
@@ -41,7 +41,7 @@ public class ItemModelImpl implements ItemModel{
      * @return it returns the list of records.
      */
     @Override
-    public List<ItemModel.GamesRecord> getItems() {
+    public List<FreeGameItem> getItems() {
         return List.copyOf(this.gamesMap.values());
     }
 
@@ -72,17 +72,17 @@ public class ItemModelImpl implements ItemModel{
      * @return it returns a newly created instance of ItemModelImpl class.
      * @throws Exception when the instance cannot be created.
      */
-    public ItemModelImpl getInstance(String database){
+    public ItemModelImpl getInstance(String database) throws IOException {
         ItemModelImpl ItemModelObj = new ItemModelImpl();
-        try {
+        //try {
             File jsonFile = new File(database);
             ObjectMapper objectMapper = new ObjectMapper();
-            Set<ItemModel.GamesRecord> recordsSet = objectMapper.readValue(jsonFile, new TypeReference<>() { });
-            ItemModelObj.gamesMap= recordsSet.stream().collect(Collectors.toMap(ItemModel.GamesRecord::title,
-                    record -> record));
-        } catch (Exception e) {
-            System.out.println("Cannot create an instance");
-        }
+            Set<FreeGameItem> recordsSet = objectMapper.readValue(jsonFile, new TypeReference<>() { });
+            ItemModelObj.gamesMap= recordsSet.stream().collect(Collectors.toMap(FreeGameItem::getTitle,
+                    item->item));
+        //} catch (Exception e) {
+            //System.out.println("Cannot create an instance");
+        //}
         return ItemModelObj;
 
     }
@@ -93,7 +93,7 @@ public class ItemModelImpl implements ItemModel{
      * @param format the format of the output given.
      * @param out the instance of the output stream.
      */
-    public void writeRecords(List<ItemModel.GamesRecord> records, Formats format, OutputStream out) {
+    public void writeRecords(List<FreeGameItem> records, Formats format, OutputStream out) {
         Display.write(records, format, out);
     }
 
