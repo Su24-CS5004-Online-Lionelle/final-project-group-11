@@ -100,7 +100,7 @@ public class ItemModelImpl implements ItemModel{
 
     public static void main(String[] args) throws Exception {
         File file = new File(DATABASE);
-        if (file.exists() & file.length() == 0) {
+        if (file.exists() && file.length() == 0) {
             GamesDatabase instance = new GamesDatabase(); // creates the json database.
         }
         //(To check if it creates the database, clear the contents of the database).
