@@ -16,7 +16,7 @@ public class SortingTest {
     void setup(){
         items = new ArrayList<>();
         items.add(new FreeGameItem(1, "Game One", "url1", "Desc1", "url1", "Action", "PC", "Publisher1", "Developer1", "2024-01-01", "url1"));
-        items.add(new FreeGameItem(2, "Game Two", "url2", "Desc2", "url2", "Adventure", "Console", "Publisher2", "Developer2", "2024-01-02", "url2"));
+        items.add(new FreeGameItem(2, "Game Two", "url2", "Desc2", "url2", "Adventure", "Console", "Publisher2", "Developer2", "2023-01-02", "url2"));
     }
 
     @Test
