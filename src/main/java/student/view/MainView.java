@@ -52,6 +52,7 @@ public class MainView extends JFrame {
         searchAddRemoveView.setAddListener(this::addButtonListener);
         searchAddRemoveView.setRemoveListener(this::removeButtonListener);
         sortFilterView.setListButtonListener(this::listButtonListener);
+        sortFilterView.setFilterButtonListener(this::filterButtonListener);
 
     }
 
@@ -95,5 +96,34 @@ public class MainView extends JFrame {
         String input = JOptionPane.showInputDialog(searchAddRemoveView.getRemoveButton(),
                 "Enter the Game Name to remove:", "Remove Game", JOptionPane.PLAIN_MESSAGE);
         this.controller.removeGameFromList(input.toLowerCase());
+    }
+
+    private void filterButtonListener(ActionEvent e) {
+        String[] options = {"id", "title", "thumbnail", "short_description", "game_url",
+                "genre", "platform", "publisher", "developer", "release_date", "NONE"};
+
+        String selectedValue = (String) JOptionPane.showInputDialog(sortFilterView.getFilterButton(),
+                "Select a filter Parameter:", "Filter Parameter Menu", JOptionPane.QUESTION_MESSAGE,
+                null, options, options[0]);
+
+        if (selectedValue != null) {
+            resultDisplayView.setResultText("Filter Parameter: " + selectedValue);
+        } else {
+            resultDisplayView.setResultText("Filter Parameter: None");
+        }
+
+        String[] options2 = {"EQUALS", "CONTAINS", "NOT_EQUAL", "GREATER_THAN", "LESS_THAN",
+                "GREATER_EQUAL", "LESS_EQUAL", "NONE"};
+
+        String selectedValue2 = (String) JOptionPane.showInputDialog(sortFilterView.getFilterButton(),
+                "Select a filter Type:", "Filter Type Menu", JOptionPane.QUESTION_MESSAGE,
+                null, options2, options2[0]);
+
+        if (selectedValue2 != null) {
+            resultDisplayView.setResultText("Filter Parameter: " + selectedValue + "\n" +
+                            "Filter Type: " + selectedValue2);
+        } else {
+            resultDisplayView.setResultText("Filter Parameter: None");
+        }
     }
 }
