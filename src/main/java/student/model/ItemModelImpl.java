@@ -18,13 +18,13 @@ import student.model.formatters.Formats;
 public class ItemModelImpl implements ItemModel{
 
     /** Game list that contains the free games. */
-    private List<FreeGameItem> gameList;
+    private List<FreeGameItem> gameList = new ArrayList<>();
+
+    /** Game list that contains the temporary free games. */
+    private List<FreeGameItem> tempGameList = new ArrayList<>();
 
     /** HashMap that contains the game name as key and record as value. */
     private Map<String, FreeGameItem> gamesMap = new HashMap<>();
-
-    /** Variable to hold the database path. */
-    private static final String DATABASE = "data/freegamerecords.json";
 
     public ItemModelImpl() {
         //this.gameList = new ArrayList<>();
@@ -45,14 +45,47 @@ public class ItemModelImpl implements ItemModel{
         return List.copyOf(this.gamesMap.values());
     }
 
-    @Override
-    public void addItem(FreeGameItem item) {
-        throw new NotImplementedException("no completed yet");
+    /**
+     * This method returns the temporary game list.
+     * @return it returns the temporary game list.
+     */
+    public List<FreeGameItem> getTempGames() {
+        return this.tempGameList;
+    }
+
+    /**
+     * This method retrieves value associated with the game title given as input from the gamesMap.
+     * @param gameName the game title/name is given as String input.
+     * @return it returns the FreeGameItem value associated with that game title key.
+     */
+    public FreeGameItem getGameFromMap(String gameName) {
+        return this.gamesMap.get(gameName);
+    }
+
+    /**
+     * This method adds the game object temporarily to a list.
+     * @param item the FreeGameItem object is stored in the temporary list.
+     */
+    public void addTempItem(FreeGameItem item) {
+        this.tempGameList.add(item);
     }
 
     @Override
-    public void removeItem(FreeGameItem item) {
-        throw new NotImplementedException("no completed yet");
+    public void addItem(FreeGameItem item) {
+        this.gameList.add(item);
+    }
+
+    /**
+     * This method returns a list of FreeGameItem objects.
+     * @return the list of FreeGameItem objects.
+     */
+    public List<FreeGameItem> getGameList() {
+        return this.gameList;
+    }
+
+    @Override
+    public void removeItem(FreeGameItem game) {
+        this.gameList.remove(game);
     }
 
     @Override
@@ -72,7 +105,11 @@ public class ItemModelImpl implements ItemModel{
      * @return it returns a newly created instance of ItemModelImpl class.
      * @throws Exception when the instance cannot be created.
      */
-    public ItemModelImpl getInstance(String database) throws IOException {
+    public ItemModelImpl createDatabase(String database) throws Exception {
+        File file = new File(database);
+        if (file.exists() && file.length() == 0) {
+            GamesDatabase instance = new GamesDatabase(); // creates the json database.
+        }
         ItemModelImpl ItemModelObj = new ItemModelImpl();
         //try {
             File jsonFile = new File(database);
@@ -88,6 +125,15 @@ public class ItemModelImpl implements ItemModel{
     }
 
     /**
+     * This method searches the gamesMap using name and returns the FreeGameItem associated with it.
+     * @param name the game name given as string.
+     * @return it returns the FreeGameItem object associated with that game name.
+     */
+    public FreeGameItem SearchByName(String name) {
+        return this.gamesMap.get(name);
+    }
+
+    /**
      * This method invokes the write method from Display class to print the records as output.
      * @param records the list of records.
      * @param format the format of the output given.
@@ -95,20 +141,5 @@ public class ItemModelImpl implements ItemModel{
      */
     public void writeRecords(List<FreeGameItem> records, Formats format, OutputStream out) {
         Display.write(records, format, out);
-    }
-
-
-    public static void main(String[] args) throws Exception {
-        File file = new File(DATABASE);
-        if (file.exists() && file.length() == 0) {
-            GamesDatabase instance = new GamesDatabase(); // creates the json database.
-        }
-        //(To check if it creates the database, clear the contents of the database).
-        ItemModelImpl ItemModelObj = new ItemModelImpl(); //creates the instance of this class.
-        ItemModelObj = ItemModelObj.getInstance(DATABASE); //creates the new instance and a record.
-        OutputStream out = System.out;
-        //System.out.println(ItemModelObj.getItems()); // prints a list of records.
-        // prints the records as per the given format.
-        ItemModelObj.writeRecords(ItemModelObj.getItems(), Formats.JSON, out);
     }
 }
