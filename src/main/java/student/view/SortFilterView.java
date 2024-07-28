@@ -58,4 +58,8 @@ public class SortFilterView extends JPanel{
     public void setListButtonListener(ActionListener listButtonListener) {
         getListButton().addActionListener(listButtonListener);
     }
+
+    public void setFilterButtonListener(ActionListener filterButtonListener) {
+        getFilterButton().addActionListener(filterButtonListener);
+    }
 }
