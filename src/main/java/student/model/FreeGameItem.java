@@ -100,7 +100,7 @@ public class FreeGameItem {
     /**
      * @return the title of the game
      */
-    public String getTitle() { return title; }
+    public String getTitle() { return title.toLowerCase(); }
 
     /**
      * @return the URL of the game's thumbnail image
