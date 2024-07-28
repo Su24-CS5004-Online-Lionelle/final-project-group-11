@@ -1,5 +1,6 @@
 package student.view;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -42,7 +43,19 @@ public class SortFilterView extends JPanel{
         return filterButton;
     }
 
+    /**
+     * This method returns the list button.
+     * @return the JButton type object associated with the list button.
+     */
     public JButton getListButton() {
         return listButton;
+    }
+
+    /**
+     * This method sets up the Action Listener to the list button.
+     * @param listButtonListener the Action Listener is given as input.
+     */
+    public void setListButtonListener(ActionListener listButtonListener) {
+        getListButton().addActionListener(listButtonListener);
     }
 }
