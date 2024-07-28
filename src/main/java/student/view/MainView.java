@@ -74,7 +74,9 @@ public class MainView extends JFrame {
      * @param e the action event is taken as input.
      */
     private void addButtonListener(ActionEvent e) {
-        this.controller.AddGameToList();
+        String input = JOptionPane.showInputDialog(searchAddRemoveView.getRemoveButton(),
+                "Enter the Game Name to Add:", "Add Game", JOptionPane.PLAIN_MESSAGE);
+        this.controller.addGameToList(input.toLowerCase());
     }
 
     /**
