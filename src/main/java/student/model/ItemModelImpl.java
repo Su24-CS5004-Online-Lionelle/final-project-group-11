@@ -18,22 +18,19 @@ import student.model.formatters.Formats;
 public class ItemModelImpl implements ItemModel{
 
     /** Game list that contains the free games. */
-    private List<FreeGameItem> gameList = new ArrayList<>();
+    private List<FreeGameItem> gameList;
 
     /** Game list that contains the temporary free games. */
-    private List<FreeGameItem> tempGameList = new ArrayList<>();
+    private List<FreeGameItem> tempGameList;
 
     /** HashMap that contains the game name as key and record as value. */
-    private Map<String, FreeGameItem> gamesMap = new HashMap<>();
+    private Map<String, FreeGameItem> gamesMap;
 
+    /** Construtor for the ItemModelImpl class */
     public ItemModelImpl() {
-        //this.gameList = new ArrayList<>();
-        // Load the initial data from the database file
-        //try {
-            //loadList(DATABASE);
-        //} catch (Exception e) {
-            //e.printStackTrace();
-        //}
+        this.gameList = new ArrayList<>();
+        this.tempGameList = new ArrayList<>();
+        this.gamesMap = new HashMap<>();
     }
 
     /**
@@ -90,12 +87,28 @@ public class ItemModelImpl implements ItemModel{
 
     @Override
     public void saveList(String filePath) {
-        throw new NotImplementedException("no completed yet");
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writeValue(new File(filePath), this.gameList);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed to save the list to the file.");
+        }
     }
 
     @Override
     public void loadList(String filePath) {
-        throw new NotImplementedException("no completed yet");
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            List<FreeGameItem> loadedList = objectMapper.readValue(new File(filePath), new TypeReference<>() { });
+            this.gameList.clear();
+            this.gamesMap.clear();
+            this.gameList.addAll(loadedList);
+            this.gamesMap.putAll(loadedList.stream().collect(Collectors.toMap(FreeGameItem::getTitle, item -> item)));
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed to load the list from the file.");
+        }
     }
 
     /**
