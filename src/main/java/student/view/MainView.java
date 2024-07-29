@@ -66,7 +66,7 @@ public class MainView extends JFrame {
             resultDisplayView.setResultText("Nothing to search");
         }
         else {
-            resultDisplayView.setResultText(this.controller.getSingleGame(hostname.toLowerCase()));
+            resultDisplayView.setResultText(this.controller.getSingleGame(hostname));
         }
     }
 
@@ -77,7 +77,9 @@ public class MainView extends JFrame {
     private void addButtonListener(ActionEvent e) {
         String input = JOptionPane.showInputDialog(searchAddRemoveView.getRemoveButton(),
                 "Enter the Game Name to Add:", "Add Game", JOptionPane.PLAIN_MESSAGE);
-        this.controller.addGameToList(input.toLowerCase());
+        if (!input.isEmpty()) {
+            this.controller.addGameToList(input);
+        }
     }
 
     /**
@@ -95,7 +97,7 @@ public class MainView extends JFrame {
     private void removeButtonListener(ActionEvent e) {
         String input = JOptionPane.showInputDialog(searchAddRemoveView.getRemoveButton(),
                 "Enter the Game Name to remove:", "Remove Game", JOptionPane.PLAIN_MESSAGE);
-        this.controller.removeGameFromList(input.toLowerCase());
+        this.controller.removeGameFromList(input);
     }
 
     private void filterButtonListener(ActionEvent e) {

@@ -31,13 +31,11 @@ public class Controller {
      * @return it returns the details as the json format string.
      */
     public String getSingleGame(String gameName) {
-        this.model.getTempGames().clear();
         OutputStream out = new ByteArrayOutputStream();
         FreeGameItem game = this.model.SearchByName(gameName);
         if (game == null) {
             return "No game found";
         }
-        this.model.addTempItem(game); // adds the game item to the temporary list/often used as cache.
         printGame(game, out);
         return out.toString();
     }
@@ -60,8 +58,8 @@ public class Controller {
      * This method adds the game from temp list after the add button is clicked.
      */
     public void addGameToList(String name) {
-        if (!name.isEmpty()) {
-            this.model.addItem(this.model.getGameFromMap(name.toLowerCase()));
+        if (this.model.checkGameExists(name)) {
+            this.model.addItem(this.model.getGameFromMap(name));
         }
     }
 
@@ -72,7 +70,7 @@ public class Controller {
      */
     public void removeGameFromList(String name){
         if (!name.isEmpty()) {
-            this.model.removeItem(this.model.getGameFromMap(name.toLowerCase()));
+            this.model.removeItem(this.model.getGameFromMap(name));
         }
     }
 
