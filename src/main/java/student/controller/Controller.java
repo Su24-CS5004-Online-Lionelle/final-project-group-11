@@ -58,7 +58,10 @@ public class Controller {
      * This method adds the game from temp list after the add button is clicked.
      */
     public void addGameToList(String name) {
-        if (this.model.checkGameExists(name)) {
+        if (this.model.getGameList().isEmpty() && this.model.checkGameExists(name)) {
+            this.model.addItem(this.model.getGameFromMap(name));
+        }
+        else if (this.model.checkGameExists(name) && !this.model.checkGameList(name)) {
             this.model.addItem(this.model.getGameFromMap(name));
         }
     }

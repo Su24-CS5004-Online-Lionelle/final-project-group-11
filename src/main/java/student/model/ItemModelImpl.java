@@ -20,16 +20,12 @@ public class ItemModelImpl implements ItemModel{
     /** Game list that contains the free games. */
     private List<FreeGameItem> gameList;
 
-    /** Game list that contains the temporary free games. */
-    private List<FreeGameItem> tempGameList;
-
     /** HashMap that contains the game name as key and record as value. */
     private Map<String, FreeGameItem> gamesMap;
 
-    /** Construtor for the ItemModelImpl class */
+    /** Constructor for the ItemModelImpl class */
     public ItemModelImpl() {
         this.gameList = new ArrayList<>();
-        this.tempGameList = new ArrayList<>();
         this.gamesMap = new HashMap<>();
     }
 
@@ -43,14 +39,6 @@ public class ItemModelImpl implements ItemModel{
     }
 
     /**
-     * This method returns the temporary game list.
-     * @return it returns the temporary game list.
-     */
-    public List<FreeGameItem> getTempGames() {
-        return this.tempGameList;
-    }
-
-    /**
      * This method retrieves value associated with the game title given as input from the gamesMap.
      * @param gameName the game title/name is given as String input.
      * @return it returns the FreeGameItem value associated with that game title key.
@@ -60,11 +48,26 @@ public class ItemModelImpl implements ItemModel{
     }
 
     /**
-     * This method adds the game object temporarily to a list.
-     * @param item the FreeGameItem object is stored in the temporary list.
+     * This method checks if the game exists in the database.
+     * @param gameName the game name given as string.
+     * @return it returns boolean true if exists. Else, it returns false.
      */
-    public void addTempItem(FreeGameItem item) {
-        this.tempGameList.add(item);
+    public Boolean checkGameExists(String gameName) {
+        return this.gamesMap.containsKey(gameName);
+    }
+
+    /**
+     * This method checks if the game exists in the user's gameList.
+     * @param gameName the game name given as string.
+     * @return it returns boolean true if exists. Else, it returns false.
+     */
+    public Boolean checkGameList(String gameName) {
+        for (FreeGameItem gameItem : this.gameList) {
+            if (gameItem.getTitle().equals(gameName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
@@ -124,15 +127,15 @@ public class ItemModelImpl implements ItemModel{
             GamesDatabase instance = new GamesDatabase(); // creates the json database.
         }
         ItemModelImpl ItemModelObj = new ItemModelImpl();
-        //try {
+        try {
             File jsonFile = new File(database);
             ObjectMapper objectMapper = new ObjectMapper();
             Set<FreeGameItem> recordsSet = objectMapper.readValue(jsonFile, new TypeReference<>() { });
             ItemModelObj.gamesMap= recordsSet.stream().collect(Collectors.toMap(FreeGameItem::getTitle,
                     item->item));
-        //} catch (Exception e) {
-            //System.out.println("Cannot create an instance");
-        //}
+        } catch (Exception e) {
+            System.out.println("Cannot create an instance");
+        }
         return ItemModelObj;
 
     }

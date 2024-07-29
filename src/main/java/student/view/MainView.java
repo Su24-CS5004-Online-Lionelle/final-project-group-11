@@ -77,7 +77,7 @@ public class MainView extends JFrame {
     private void addButtonListener(ActionEvent e) {
         String input = JOptionPane.showInputDialog(searchAddRemoveView.getRemoveButton(),
                 "Enter the Game Name to Add:", "Add Game", JOptionPane.PLAIN_MESSAGE);
-        if (!input.isEmpty()) {
+        if (!input.isEmpty() || input == null) {
             this.controller.addGameToList(input);
         }
     }
