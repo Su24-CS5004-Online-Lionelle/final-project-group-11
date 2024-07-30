@@ -179,8 +179,13 @@ public class MainView extends JFrame {
     private void addAllButtonListener(ActionEvent e) {
         resultDisplayView.setResultText(this.controller.addAllGamesToList());
     }
-
     private void exportButtonListener(ActionEvent e) {
+        // Check if the current list is empty
+        if (controller.getGameList().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "The current list is empty. Nothing to export.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         int userSelection = exportButtonView.showSaveDialog();
 
         if (userSelection == JFileChooser.APPROVE_OPTION) {
@@ -194,8 +199,6 @@ public class MainView extends JFrame {
                 format = Formats.JSON;
             } else if (extension.equals("csv")) {
                 format = Formats.CSV;
-            } else if (extension.equals("pretty")) {
-                format = Formats.PRETTY;
             } else {
                 // Unsupported file format
                 JOptionPane.showMessageDialog(this, "Unsupported file format.", "Error", JOptionPane.ERROR_MESSAGE);
