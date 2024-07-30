@@ -181,29 +181,42 @@ public class MainView extends JFrame {
         resultDisplayView.setResultText(this.controller.addAllGamesToList());
     }
 
+    /**
+     * This method is the listener for the Export button.
+     * @param e the action event is taken as input.
+     */
     private void exportButtonListener(ActionEvent e) {
-        // Determine the file format based on user selection
+        System.out.println("Export button clicked"); // Debugging line
         int userSelection = exportButtonView.showSaveDialog();
+        System.out.println("File chooser opened");  // Debugging line
 
         if (userSelection == JFileChooser.APPROVE_OPTION) {
             File fileToSave = exportButtonView.getSelectedFile();
-            String extension = exportButtonView.getFileExtension();
+            String extension = exportButtonView.getFileExtension().toLowerCase();
+            System.out.println("File extension: " + extension);  // Debugging line
 
             Formats format;
-            if (extension.equals("xml")) {
-                format = Formats.XML;
-            } else if (extension.equals("json")) {
-                format = Formats.JSON;
-            } else if (extension.equals("csv")) {
-                format = Formats.CSV;
-            } else {
-                // Unsupported file format
-                JOptionPane.showMessageDialog(this, "Unsupported file format.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
+            switch (extension) {
+                case "xml" -> format = Formats.XML;
+                case "json" -> format = Formats.JSON;
+                case "csv" -> format = Formats.CSV;
+                case "txt" -> format = Formats.PRETTY;
+                default -> {
+                    // Unsupported file format
+                    JOptionPane.showMessageDialog(this, "Unsupported file format.", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
+
+            // Ensure the file has the correct extension
+            String fileName = fileToSave.getAbsolutePath();
+            if (!fileName.toLowerCase().endsWith("." + extension)) {
+                fileToSave = new File(fileName + "." + extension);
             }
 
             // Check if the current list is empty
             String data = controller.getAllGamesList(format);
+            System.out.println("Data retrieved: " + data);  // Debugging line
             if (data.equals("Empty list")) {
                 JOptionPane.showMessageDialog(this, "The current list is empty. Nothing to export.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;

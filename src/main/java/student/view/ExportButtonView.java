@@ -92,8 +92,12 @@ public class ExportButtonView extends JPanel {
      */
     public String getFileExtension() {
         File selectedFile = getSelectedFile();
+        if (selectedFile == null) {
+            return "";
+        }
         String fileName = selectedFile.getName();
         int dotIndex = fileName.lastIndexOf('.');
-        return (dotIndex == -1) ? "" : fileName.substring(dotIndex + 1);
+        return (dotIndex == -1) ? "" : fileName.substring(dotIndex + 1).toLowerCase();
     }
+    
 }
