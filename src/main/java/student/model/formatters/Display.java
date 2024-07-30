@@ -31,7 +31,6 @@ public class Display {
         PrintStream pout = new PrintStream(out);
         for (FreeGameItem record : records) {
             prettySingle(record, pout);
-            pout.println();
         }
     }
 
@@ -122,8 +121,10 @@ public class Display {
             case CSV:
                 writeCSVData(records, out);
                 break;
-            default:
+            case PRETTY:
                 prettyPrint(records, out);
+            default:
+                break;
         }
     }
 }
