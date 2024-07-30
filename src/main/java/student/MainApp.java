@@ -13,7 +13,7 @@ public class MainApp {
     }
     public static void main(String[] args) throws Exception {
         /*
-         * feel free to delete following line 
+         * feel free to delete following line
          * just a test for GUI setup
          */
         System.out.println("to set up gradle project, run: gradle init");

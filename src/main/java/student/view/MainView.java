@@ -60,6 +60,7 @@ public class MainView extends JFrame {
         sortFilterView.setFilterButtonListener(this::filterButtonListener);
         sortFilterView.setSortButtonListener(this::sortButtonListener);
         sortFilterView.setAddAllButtonListener(this::addAllButtonListener);
+        exportButtonView.addExportListener(this::exportButtonListener);
     }
 
     /**
@@ -179,13 +180,9 @@ public class MainView extends JFrame {
     private void addAllButtonListener(ActionEvent e) {
         resultDisplayView.setResultText(this.controller.addAllGamesToList());
     }
-    private void exportButtonListener(ActionEvent e) {
-        // Check if the current list is empty
-        if (controller.getGameList().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "The current list is empty. Nothing to export.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
 
+    private void exportButtonListener(ActionEvent e) {
+        // Determine the file format based on user selection
         int userSelection = exportButtonView.showSaveDialog();
 
         if (userSelection == JFileChooser.APPROVE_OPTION) {
@@ -205,8 +202,14 @@ public class MainView extends JFrame {
                 return;
             }
 
+            // Check if the current list is empty
+            String data = controller.getAllGamesList(format);
+            if (data.equals("Empty list")) {
+                JOptionPane.showMessageDialog(this, "The current list is empty. Nothing to export.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
             try (OutputStream out = new FileOutputStream(fileToSave)) {
-                String data = controller.getAllGamesList(format);
                 out.write(data.getBytes());
                 JOptionPane.showMessageDialog(this, "Export successful.", "Success", JOptionPane.INFORMATION_MESSAGE);
             } catch (Exception ex) {
