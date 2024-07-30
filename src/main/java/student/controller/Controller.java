@@ -1,16 +1,16 @@
 package student.controller;
 
-import student.model.FreeGameItem;
-import student.model.ItemModelImpl;
-import student.model.Sorting;
-import student.model.formatters.Filter;
-import student.model.formatters.Formats;
-
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import student.model.FreeGameItem;
+import student.model.ItemModelImpl;
+import student.model.Sorting;
+import student.model.formatters.Filter;
+import student.model.formatters.Formats;
 
 public class Controller {
 

@@ -21,7 +21,7 @@ public class ExportButtonView extends JPanel {
      * Initializes the export button and sets up the panel layout.
      */
     public ExportButtonView() {
-        setLayout(new GridBagLayout()); 
+        setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridx = 0;
@@ -55,6 +55,7 @@ public class ExportButtonView extends JPanel {
      */
     public void addExportListener(ActionListener listener) {
         exportButton.addActionListener(listener);
+        
     }
 
     /**
@@ -86,12 +87,13 @@ public class ExportButtonView extends JPanel {
 
     /**
      * Gets the selected file extension from the file chooser.
-     * 
+     *
      * @return the selected file extension
      */
     public String getFileExtension() {
-        FileNameExtensionFilter filter = (FileNameExtensionFilter) fileChooser.getFileFilter();
-        String[] extensions = filter.getExtensions();
-        return extensions[0];
+        File selectedFile = getSelectedFile();
+        String fileName = selectedFile.getName();
+        int dotIndex = fileName.lastIndexOf('.');
+        return (dotIndex == -1) ? "" : fileName.substring(dotIndex + 1);
     }
 }

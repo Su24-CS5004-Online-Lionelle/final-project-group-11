@@ -1,12 +1,18 @@
 package student.view;
 
-import student.controller.Controller;
-import student.model.formatters.Formats;
-
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 
-import javax.swing.*;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+import student.controller.Controller;
+import student.model.formatters.Formats;
 
 /**
  * MainView is a JFrame that combines various views into a single window.
@@ -172,5 +178,38 @@ public class MainView extends JFrame {
      */
     private void addAllButtonListener(ActionEvent e) {
         resultDisplayView.setResultText(this.controller.addAllGamesToList());
+    }
+
+    private void exportButtonListener(ActionEvent e) {
+        int userSelection = exportButtonView.showSaveDialog();
+
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            File fileToSave = exportButtonView.getSelectedFile();
+            String extension = exportButtonView.getFileExtension();
+
+            Formats format;
+            if (extension.equals("xml")) {
+                format = Formats.XML;
+            } else if (extension.equals("json")) {
+                format = Formats.JSON;
+            } else if (extension.equals("csv")) {
+                format = Formats.CSV;
+            } else if (extension.equals("pretty")) {
+                format = Formats.PRETTY;
+            } else {
+                // Unsupported file format
+                JOptionPane.showMessageDialog(this, "Unsupported file format.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            try (OutputStream out = new FileOutputStream(fileToSave)) {
+                String data = controller.getAllGamesList(format);
+                out.write(data.getBytes());
+                JOptionPane.showMessageDialog(this, "Export successful.", "Success", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error exporting file.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }
 }
