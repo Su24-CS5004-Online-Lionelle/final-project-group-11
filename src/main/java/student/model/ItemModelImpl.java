@@ -2,7 +2,6 @@ package student.model;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.lang3.NotImplementedException;
 
 import java.io.*;
 import java.util.*;
@@ -23,10 +22,14 @@ public class ItemModelImpl implements ItemModel{
     /** HashMap that contains the game name as key and record as value. */
     private Map<String, FreeGameItem> gamesMap;
 
+    /** List to store the temporary Filtered/Sorted games. */
+    private List<FreeGameItem> tempGamesList;
+
     /** Constructor for the ItemModelImpl class */
     public ItemModelImpl() {
         this.gameList = new ArrayList<>();
         this.gamesMap = new HashMap<>();
+        this.tempGamesList = new ArrayList<>();
     }
 
     /**
@@ -68,6 +71,23 @@ public class ItemModelImpl implements ItemModel{
             }
         }
         return false;
+    }
+
+    /**
+     * This method updates the temporary gamesList.
+     * @param newGamesList the newly filtered/sorted list of games.
+     */
+    public void updateTempGameList(List<FreeGameItem> newGamesList) {
+        this.tempGamesList.clear();
+        this.tempGamesList.addAll(newGamesList);
+    }
+
+    /**
+     * This method returns the temporary games list.
+     * @return it returns the temporary games list.
+     */
+    public List<FreeGameItem> getTempGamesList() {
+        return this.tempGamesList;
     }
 
     @Override
