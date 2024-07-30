@@ -9,8 +9,8 @@ import javax.swing.JPanel;
  * SortFilterView is a JPanel that contains buttons for sorting, filtering, and listing actions.
  */
 public class SortFilterView extends JPanel{
-    private JButton sortAscButton;
-    private JButton sortDescButton;
+    private JButton sortButton;
+    private JButton addAllButton;
     private JButton filterButton;
     private JButton listButton;
 
@@ -20,23 +20,23 @@ public class SortFilterView extends JPanel{
      */
     public SortFilterView() {
         setLayout(new GridLayout(1, 4));
-        sortAscButton = new JButton("Sort (asc)");
-        sortDescButton = new JButton("Sort (desc)");
+        sortButton = new JButton("Sort");
+        addAllButton = new JButton("Add All");
         filterButton = new JButton("Filter");
         listButton = new JButton("List");
 
-        add(sortAscButton);
-        add(sortDescButton);
+        add(sortButton);
+        add(addAllButton);
         add(filterButton);
         add(listButton);
     }
 
-    public JButton getSortAscButton() {
-        return sortAscButton;
+    public JButton getSortButton() {
+        return sortButton;
     }
 
-    public JButton getSortDescButton() {
-        return sortDescButton;
+    public JButton getAddAllButton() {
+        return addAllButton;
     }
 
     public JButton getFilterButton() {
@@ -59,7 +59,27 @@ public class SortFilterView extends JPanel{
         getListButton().addActionListener(listButtonListener);
     }
 
+    /**
+     * This method sets up the Action Listener to the Filter button.
+     * @param filterButtonListener the Action Listener is given as input.
+     */
     public void setFilterButtonListener(ActionListener filterButtonListener) {
         getFilterButton().addActionListener(filterButtonListener);
+    }
+
+    /**
+     * This method sets up the Action Listener to the Sort button.
+     * @param sortButtonListener the Action Listener is given as input.
+     */
+    public void setSortButtonListener(ActionListener sortButtonListener) {
+        getSortButton().addActionListener(sortButtonListener);
+    }
+
+    /**
+     * This method sets up the Action Listener to the Add All button.
+     * @param addAllButtonListener the Action Listener is given as input.
+     */
+    public void setAddAllButtonListener(ActionListener addAllButtonListener) {
+        getAddAllButton().addActionListener(addAllButtonListener);
     }
 }
