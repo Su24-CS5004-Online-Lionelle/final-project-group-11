@@ -10,6 +10,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import student.controller.Controller;
 import student.model.formatters.Formats;
@@ -186,19 +187,19 @@ public class MainView extends JFrame {
      * @param e the action event is taken as input.
      */
     private void exportButtonListener(ActionEvent e) {
-        System.out.println("Export button clicked"); // Debugging line
         int userSelection = exportButtonView.showSaveDialog();
-        System.out.println("File chooser opened");  // Debugging line
     
         if (userSelection == JFileChooser.APPROVE_OPTION) {
             File fileToSave = exportButtonView.getSelectedFile();
-            String extension = exportButtonView.getFileExtension().toLowerCase();
-            System.out.println("File extension: " + extension);  // Debugging line
     
-            if (extension.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Please provide a valid file name with an extension.", "Error", JOptionPane.ERROR_MESSAGE);
+            if (fileToSave == null) {
+                JOptionPane.showMessageDialog(this, "No file selected.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
+    
+            FileNameExtensionFilter filter = exportButtonView.getFileFilter();
+            String[] extensions = filter.getExtensions();
+            String extension = extensions[0].toLowerCase();
     
             Formats format;
             switch (extension) {
@@ -207,26 +208,17 @@ public class MainView extends JFrame {
                 case "csv" -> format = Formats.CSV;
                 case "txt" -> format = Formats.PRETTY;
                 default -> {
-                    // Unsupported file format
                     JOptionPane.showMessageDialog(this, "Unsupported file format.", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             }
     
-            // Ensure the file has the correct extension
             String fileName = fileToSave.getAbsolutePath();
             if (!fileName.toLowerCase().endsWith("." + extension)) {
                 fileToSave = new File(fileName + "." + extension);
             }
     
-            // Check if the current list is empty
             String data = controller.getAllGamesList(format);
-            System.out.println("Data retrieved: " + data);  // Debugging line
-            if (data.equals("Empty list")) {
-                JOptionPane.showMessageDialog(this, "The current list is empty. Nothing to export.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-    
             try (OutputStream out = new FileOutputStream(fileToSave)) {
                 out.write(data.getBytes());
                 JOptionPane.showMessageDialog(this, "Export successful.", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -235,5 +227,5 @@ public class MainView extends JFrame {
                 JOptionPane.showMessageDialog(this, "Error exporting file.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-    }
+    } 
 }
