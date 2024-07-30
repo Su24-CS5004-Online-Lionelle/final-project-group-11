@@ -37,7 +37,7 @@ public class Sorting {
                 return Comparator.comparing(FreeGameItem::getTitle, String.CASE_INSENSITIVE_ORDER);
             case "genre":
                 return Comparator.comparing(FreeGameItem::getGenre, String.CASE_INSENSITIVE_ORDER);
-            case "releasedate":
+            case "release_date":
                 return Comparator.comparing(FreeGameItem::getReleaseDate);
             case "publisher":
                 return Comparator.comparing(FreeGameItem::getPublisher, String.CASE_INSENSITIVE_ORDER);
