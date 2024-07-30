@@ -189,12 +189,17 @@ public class MainView extends JFrame {
         System.out.println("Export button clicked"); // Debugging line
         int userSelection = exportButtonView.showSaveDialog();
         System.out.println("File chooser opened");  // Debugging line
-
+    
         if (userSelection == JFileChooser.APPROVE_OPTION) {
             File fileToSave = exportButtonView.getSelectedFile();
             String extension = exportButtonView.getFileExtension().toLowerCase();
             System.out.println("File extension: " + extension);  // Debugging line
-
+    
+            if (extension.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please provide a valid file name with an extension.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+    
             Formats format;
             switch (extension) {
                 case "xml" -> format = Formats.XML;
@@ -207,13 +212,13 @@ public class MainView extends JFrame {
                     return;
                 }
             }
-
+    
             // Ensure the file has the correct extension
             String fileName = fileToSave.getAbsolutePath();
             if (!fileName.toLowerCase().endsWith("." + extension)) {
                 fileToSave = new File(fileName + "." + extension);
             }
-
+    
             // Check if the current list is empty
             String data = controller.getAllGamesList(format);
             System.out.println("Data retrieved: " + data);  // Debugging line
@@ -221,7 +226,7 @@ public class MainView extends JFrame {
                 JOptionPane.showMessageDialog(this, "The current list is empty. Nothing to export.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-
+    
             try (OutputStream out = new FileOutputStream(fileToSave)) {
                 out.write(data.getBytes());
                 JOptionPane.showMessageDialog(this, "Export successful.", "Success", JOptionPane.INFORMATION_MESSAGE);
