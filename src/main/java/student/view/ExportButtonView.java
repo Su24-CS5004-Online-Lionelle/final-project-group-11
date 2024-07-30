@@ -1,5 +1,6 @@
 package student.view;
-import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
 import java.io.File;
 
@@ -12,6 +13,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class ExportButtonView extends JPanel {
     private JButton exportButton;
+    private JButton loadListButton;
     private JFileChooser fileChooser;
 
     /**
@@ -19,9 +21,18 @@ public class ExportButtonView extends JPanel {
      * Initializes the export button and sets up the panel layout.
      */
     public ExportButtonView() {
-        setLayout(new BorderLayout());
+        setLayout(new GridBagLayout()); 
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 1.0;
+        loadListButton = new JButton("Load List");
+        add(loadListButton, gbc);
+    
+        gbc.gridy = 1;
         exportButton = new JButton("Export");
-        add(exportButton, BorderLayout.CENTER);
+        add(exportButton, gbc);
 
         // Initialize JFileChooser
         fileChooser = new JFileChooser();
@@ -46,6 +57,15 @@ public class ExportButtonView extends JPanel {
         exportButton.addActionListener(listener);
     }
 
+    /**
+     * Adds an ActionListener to the load list button.
+     * @param listener the ActionListener to be added
+     */
+
+    public void addLoadListListener(ActionListener listener) {
+        loadListButton.addActionListener(listener);
+    }
+    
     /**
      * Displays the save dialog and returns the user's action.
      * 
