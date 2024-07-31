@@ -47,7 +47,7 @@ public class ItemModelImpl implements ItemModel{
      * @return it returns the FreeGameItem value associated with that game title key.
      */
     public FreeGameItem getGameFromMap(String gameName) {
-        return this.gamesMap.get(gameName);
+        return this.gamesMap.get(gameName.toLowerCase());
     }
 
     /**
@@ -56,7 +56,7 @@ public class ItemModelImpl implements ItemModel{
      * @return it returns boolean true if exists. Else, it returns false.
      */
     public Boolean checkGameExists(String gameName) {
-        return this.gamesMap.containsKey(gameName);
+        return this.gamesMap.containsKey(gameName.toLowerCase());
     }
 
     /**
@@ -92,6 +92,7 @@ public class ItemModelImpl implements ItemModel{
 
     @Override
     public void addItem(FreeGameItem item) {
+        this.gamesMap.put(item.getTitle().toLowerCase(), item);
         this.gameList.add(item);
     }
 
@@ -105,6 +106,7 @@ public class ItemModelImpl implements ItemModel{
 
     @Override
     public void removeItem(FreeGameItem game) {
+        this.gamesMap.remove(game.getTitle().toLowerCase());
         this.gameList.remove(game);
     }
 
@@ -151,7 +153,7 @@ public class ItemModelImpl implements ItemModel{
             File jsonFile = new File(database);
             ObjectMapper objectMapper = new ObjectMapper();
             Set<FreeGameItem> recordsSet = objectMapper.readValue(jsonFile, new TypeReference<>() { });
-            ItemModelObj.gamesMap= recordsSet.stream().collect(Collectors.toMap(FreeGameItem::getTitle,
+            ItemModelObj.gamesMap= recordsSet.stream().collect(Collectors.toMap(item -> item.getTitle().toLowerCase(),
                     item->item));
         } catch (Exception e) {
             System.out.println("Cannot create an instance");
@@ -166,7 +168,7 @@ public class ItemModelImpl implements ItemModel{
      * @return it returns the FreeGameItem object associated with that game name.
      */
     public FreeGameItem SearchByName(String name) {
-        return this.gamesMap.get(name);
+        return this.gamesMap.get(name.toLowerCase());
     }
 
     /**
