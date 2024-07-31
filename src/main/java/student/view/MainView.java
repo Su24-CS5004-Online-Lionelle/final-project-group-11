@@ -54,6 +54,7 @@ public class MainView extends JFrame {
         sortFilterView.setFilterButtonListener(this::filterButtonListener);
         sortFilterView.setSortButtonListener(this::sortButtonListener);
         sortFilterView.setAddAllButtonListener(this::addAllButtonListener);
+        sortFilterView.setRemoveAllButtonListener(this::removeAllButtonListener);
     }
 
     /**
@@ -172,5 +173,13 @@ public class MainView extends JFrame {
      */
     private void addAllButtonListener(ActionEvent e) {
         resultDisplayView.setResultText(this.controller.addAllGamesToList());
+    }
+
+    /**
+     * This method is the listener for the Remove All button.
+     * @param e the action event is taken as input.
+     */
+    private void removeAllButtonListener(ActionEvent e) {
+        resultDisplayView.setResultText(this.controller.removeAllGamesList());
     }
 }
