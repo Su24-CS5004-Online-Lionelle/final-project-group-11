@@ -50,7 +50,6 @@ public class ExportButtonView extends JPanel {
 
     /**
      * Adds an ActionListener to the export button.
-     * 
      * @param listener the ActionListener to be added
      */
     public void addExportListener(ActionListener listener) {
@@ -62,14 +61,12 @@ public class ExportButtonView extends JPanel {
      * Adds an ActionListener to the load list button.
      * @param listener the ActionListener to be added
      */
-
-    public void addLoadListListener(ActionListener listener) {
+    public void setLoadListButtonListener(ActionListener listener) {
         loadListButton.addActionListener(listener);
     }
     
     /**
      * Displays the save dialog and returns the user's action.
-     * 
      * @return the return state of the file chooser on pop-up
      */
     public int showSaveDialog() {
@@ -78,7 +75,6 @@ public class ExportButtonView extends JPanel {
 
     /**
      * Gets the selected file from the file chooser.
-     * 
      * @return the selected file
      */
     public File getSelectedFile() {
@@ -87,7 +83,6 @@ public class ExportButtonView extends JPanel {
 
     /**
      * Gets the selected file extension from the file chooser.
-     *
      * @return the selected file extension
      */
     public String getFileExtension() {
@@ -103,6 +98,10 @@ public class ExportButtonView extends JPanel {
         return fileName.substring(dotIndex + 1).toLowerCase();
     }
 
+    /**
+     * This method gets the filter extension filter and returns it.
+     * @return it returns the filter.
+     */
     public FileNameExtensionFilter getFileFilter() {
         return (FileNameExtensionFilter) fileChooser.getFileFilter();
     }
