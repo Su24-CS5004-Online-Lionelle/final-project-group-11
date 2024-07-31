@@ -61,11 +61,7 @@ public class MainView extends JFrame {
         sortFilterView.setFilterButtonListener(this::filterButtonListener);
         sortFilterView.setSortButtonListener(this::sortButtonListener);
         sortFilterView.setAddAllButtonListener(this::addAllButtonListener);
-<<<<<<< HEAD
         exportButtonView.addExportListener(this::exportButtonListener);
-=======
-        sortFilterView.setRemoveAllButtonListener(this::removeAllButtonListener);
->>>>>>> a931ae164fc563d158bb8bcf8273741a9642dbde
     }
 
     /**
@@ -187,7 +183,6 @@ public class MainView extends JFrame {
     }
 
     /**
-<<<<<<< HEAD
      * This method is the listener for the Export button.
      * @param e the action event is taken as input.
      */
@@ -233,12 +228,4 @@ public class MainView extends JFrame {
             }
         }
     } 
-=======
-     * This method is the listener for the Remove All button.
-     * @param e the action event is taken as input.
-     */
-    private void removeAllButtonListener(ActionEvent e) {
-        resultDisplayView.setResultText(this.controller.removeAllGamesList());
-    }
->>>>>>> a931ae164fc563d158bb8bcf8273741a9642dbde
 }
