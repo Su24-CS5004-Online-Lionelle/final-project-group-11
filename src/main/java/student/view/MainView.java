@@ -62,6 +62,8 @@ public class MainView extends JFrame {
         sortFilterView.setSortButtonListener(this::sortButtonListener);
         sortFilterView.setAddAllButtonListener(this::addAllButtonListener);
         exportButtonView.addExportListener(this::exportButtonListener);
+        sortFilterView.setRemoveAllButtonListener(this::removeAllButtonListener);
+        exportButtonView.setLoadListButtonListener(this::loadListButtonListener);
     }
 
     /**
@@ -150,7 +152,7 @@ public class MainView extends JFrame {
      * @param e the action event is taken as input.
      */
     private void sortButtonListener(ActionEvent e) {
-        String[] options = {"title", "genre", "publisher", "developer", "release_date"};
+        String[] options = {"id", "title", "genre", "publisher", "developer", "release_date"};
 
         String selectedValue = (String) JOptionPane.showInputDialog(sortFilterView.getFilterButton(),
                 "Select a Sort Parameter:", "Sort Parameter Menu", JOptionPane.QUESTION_MESSAGE,
@@ -193,7 +195,8 @@ public class MainView extends JFrame {
             File fileToSave = exportButtonView.getSelectedFile();
     
             if (fileToSave == null) {
-                JOptionPane.showMessageDialog(this, "No file selected.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "No file selected.",
+                        "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
     
@@ -227,5 +230,28 @@ public class MainView extends JFrame {
                 JOptionPane.showMessageDialog(this, "Error exporting file.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-    } 
+    }
+
+     /** This method is the listener for the Remove All button.
+     * @param e the action event is taken as input.
+     */
+    private void removeAllButtonListener(ActionEvent e) {
+        resultDisplayView.setResultText(this.controller.removeAllGamesList());
+    }
+
+    /** This method is the listener for the Load List button.
+     * @param e the action event is taken as input.
+     */
+    public void loadListButtonListener(ActionEvent e) {
+        String filePath = null;
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("JSON files",
+                "json"));
+        int returnValue = fileChooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            filePath = fileChooser.getSelectedFile().getPath();
+        }
+
+        this.controller.loadGamesList(filePath);
+    }
 }
