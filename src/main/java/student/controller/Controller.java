@@ -94,6 +94,19 @@ public class Controller {
     }
 
     /**
+     * This method removes all games from the gamesList.
+     * @return it returns the message if the games removed from the list.
+     */
+    public String removeAllGamesList() {
+        if (this.model.getGameList().isEmpty()) {
+            return "Games List is already empty";
+        }
+
+        this.model.getGameList().clear();
+        return "Removed All Games from Main List";
+    }
+
+    /**
      * This method adds the game from temp list after the add button is clicked.
      */
     public void addGameToList(String name) {
