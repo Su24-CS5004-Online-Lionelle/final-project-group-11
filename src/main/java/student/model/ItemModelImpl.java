@@ -127,9 +127,8 @@ public class ItemModelImpl implements ItemModel{
             ObjectMapper objectMapper = new ObjectMapper();
             List<FreeGameItem> loadedList = objectMapper.readValue(new File(filePath), new TypeReference<>() { });
             this.gameList.clear();
-            this.gamesMap.clear();
             this.gameList.addAll(loadedList);
-            this.gamesMap.putAll(loadedList.stream().collect(Collectors.toMap(FreeGameItem::getTitle, item -> item)));
+            this.updateTempGameList(this.gameList);
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException("Failed to load the list from the file.");
