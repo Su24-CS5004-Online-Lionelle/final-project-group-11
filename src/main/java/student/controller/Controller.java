@@ -182,4 +182,12 @@ public class Controller {
         printGamesList(sortedGamesList, Formats.JSON, out);
         return out.toString();
     }
+
+    /**
+     * This method gets the file path as input and invokes the loadList method from model.
+     * @param filePath the filePath is given as String.
+     */
+    public void loadGamesList(String filePath) {
+        this.model.loadList(filePath);
+    }
 }
