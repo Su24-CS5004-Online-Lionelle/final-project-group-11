@@ -90,7 +90,7 @@ public class SortFilterView extends JPanel{
 
     /**
      * This method sets up the Action Listener to the Remove All button.
-     * @param addAllButtonListener the Action Listener is given as input.
+     * @param removeAllButtonListener the Action Listener is given as input.
      */
     public void setRemoveAllButtonListener(ActionListener removeAllButtonListener) {
         getRemoveAllButton().addActionListener(removeAllButtonListener);
