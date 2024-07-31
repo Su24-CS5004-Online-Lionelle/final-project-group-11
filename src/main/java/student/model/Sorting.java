@@ -33,6 +33,8 @@ public class Sorting {
      */
     private static Comparator<FreeGameItem> getComparatorByField(String field){
         switch (field.toLowerCase()) {
+            case "id":
+                return Comparator.comparing(FreeGameItem::getId);
             case "title":
                 return Comparator.comparing(FreeGameItem::getTitle, String.CASE_INSENSITIVE_ORDER);
             case "genre":
