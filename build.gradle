@@ -41,6 +41,8 @@ dependencies {
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.13.0'
     // Jackson JSONObject
     implementation 'org.json:json:20230227'
+    // CSV
+    implementation 'org.apache.commons:commons-csv:1.8'
 }
 
 test {
