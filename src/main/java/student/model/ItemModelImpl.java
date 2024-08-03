@@ -7,6 +7,12 @@ import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.opencsv.CSVParser;
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvException;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
 import student.model.formatters.Display;
 import student.model.formatters.Formats;
 
@@ -122,7 +128,7 @@ public class ItemModelImpl implements ItemModel{
     }
 
     @Override
-    public void loadList(String filePath) {
+    public void loadListJson(String filePath) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             List<FreeGameItem> loadedList = objectMapper.readValue(new File(filePath), new TypeReference<>() { });
@@ -133,6 +139,60 @@ public class ItemModelImpl implements ItemModel{
             e.printStackTrace();
             throw new RuntimeException("Failed to load the list from the file.");
         }
+    }
+
+    /**
+     * This method reads the xml games list file and updates the main games list with new contents.
+     * @param filePath the xml file path is given as string.
+     */
+    public void loadListXml(String filePath) {
+        try {
+            XmlMapper xmlMapper = new XmlMapper();
+            List<FreeGameItem> loadedList = xmlMapper.readValue(new File(filePath), new TypeReference<>() { });
+            this.gameList.clear();
+            this.gameList.addAll(loadedList);
+            this.updateTempGameList(this.gameList);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed to load the list from the file.");
+        }
+    }
+
+    /**
+     * This method reads the csv games list file and updates the main games list with new contents.
+     * @param filePath the csv file path is given as string.
+     */
+    public void loadListCsv(String filePath) {
+        List<FreeGameItem> items = new ArrayList<>();
+
+        try (CSVReader reader = new CSVReader(new FileReader(filePath))) {
+            reader.skip(1);
+
+            String[] nextLine;
+            while ((nextLine = reader.readNext()) != null) {
+                int id = Integer.parseInt(nextLine[0]);
+                String title = nextLine[1];
+                String thumbnail = nextLine[2];
+                String description = nextLine[3];
+                String game_url = nextLine[4];
+                String genre = nextLine[5];
+                String platform = nextLine[6];
+                String publisher = nextLine[7];
+                String developer = nextLine[8];
+                String release_date = nextLine[9];
+                String freeGame_url = nextLine[10];
+
+                FreeGameItem item = new FreeGameItem(id, title, thumbnail, description, game_url,
+                        genre, platform, publisher, developer, release_date, freeGame_url);
+                items.add(item);
+            }
+        } catch (IOException | CsvException e) {
+            e.printStackTrace();
+        }
+
+        this.gameList.clear();
+        this.gameList.addAll(items);
+        this.updateTempGameList(this.gameList);
     }
 
     /**

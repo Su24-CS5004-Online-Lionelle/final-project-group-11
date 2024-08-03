@@ -244,14 +244,25 @@ public class MainView extends JFrame {
      */
     public void loadListButtonListener(ActionEvent e) {
         String filePath = null;
+        String extension = null;
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("JSON files",
-                "json"));
+        FileNameExtensionFilter jsonFilter = new FileNameExtensionFilter("JSON files (*.json)", "json");
+        FileNameExtensionFilter xmlFilter = new FileNameExtensionFilter("XML files (*.xml)", "xml");
+        FileNameExtensionFilter csvFilter = new FileNameExtensionFilter("CSV files (*.csv)", "csv");
+        fileChooser.setFileFilter(jsonFilter);
+        fileChooser.addChoosableFileFilter(xmlFilter);
+        fileChooser.addChoosableFileFilter(csvFilter);
+
         int returnValue = fileChooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             filePath = fileChooser.getSelectedFile().getPath();
+            String fileName = fileChooser.getSelectedFile().getName();
+            int dotIndex = fileName.lastIndexOf('.');
+            if (dotIndex > 0 && dotIndex < fileName.length() - 1) {
+                extension = fileName.substring(dotIndex + 1).toLowerCase();
+            }
         }
 
-        this.controller.loadGamesList(filePath);
+        this.controller.loadGamesList(filePath, extension);
     }
 }

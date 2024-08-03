@@ -38,9 +38,9 @@ public interface ItemModel {
     void saveList(String filePath);
 
     /**
-     * Load the list from a file.
+     * Load the list from a json file.
      *
      * @param filePath the path to load the file from
      */
-    void loadList(String filePath);
+    void loadListJson(String filePath);
 }

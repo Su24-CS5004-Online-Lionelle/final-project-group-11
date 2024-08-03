@@ -186,8 +186,17 @@ public class Controller {
     /**
      * This method gets the file path as input and invokes the loadList method from model.
      * @param filePath the filePath is given as String.
+     * @param extension the extension of the file as string.
      */
-    public void loadGamesList(String filePath) {
-        this.model.loadList(filePath);
+    public void loadGamesList(String filePath, String extension) {
+        if (extension.equals("json")) {
+            this.model.loadListJson(filePath);
+        }
+        else if (extension.equals("xml")) {
+            this.model.loadListXml(filePath);
+        }
+        else if (extension.equals("csv")) {
+            this.model.loadListCsv(filePath);
+        }
     }
 }
