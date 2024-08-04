@@ -139,7 +139,8 @@ public class MainView extends JFrame {
 
         String parameterValue = JOptionPane.showInputDialog(searchAddRemoveView.getRemoveButton(),
                 "Enter the value:", "Filter Value", JOptionPane.PLAIN_MESSAGE);
-        if (selectedValue != null && selectedValue2 != null && parameterValue != null) {
+        if (selectedValue != null && selectedValue2 != null && parameterValue != null &&
+                !parameterValue.isEmpty()) {
             String fullString = selectedValue + selectedValue2 + parameterValue;
             resultDisplayView.setResultText(this.controller.filterGames(fullString));
         } else {
