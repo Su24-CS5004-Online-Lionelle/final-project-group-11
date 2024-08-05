@@ -36,75 +36,75 @@ Screenshots when the filter parameter is "id", filter type is "==", feature is "
 ![filterid4](GUIimg/filterid4.png)
 
 Screenshots when the filter parameter is "title", filter type is "==", feature is "Overwatch 2"。
-![filtertilt==](GUIimg/filtertilt==.png)
+![filtertilt==](GUIimg/filtertilt_equal.png)
 
 Screenshots when the filter parameter is "thumbnail", filter type is "==", feature is "https://www.freetogame.com/g/292/thumbnail.jpg"。
 ![thumnail](GUIimg/thumnail.png)
 
 Screenshots when the filter parameter is "short description", filter type is "==", feature is "Take the battle royale genre and add  mystical powers and you have CRSED: F.O.A.D. (Aka Cuisine Royale: Second Edition)"。
-![shortdes==](GUIimg/shortdes==.png)
+![shortdes==](GUIimg/shortdes_equal.png)
 
 Screenshots when the filter parameter is "game url", filter type is "==", feature is "https://www.freetogame.com/open/second-life"。
-![gameurl==](GUIimg/gameurl==.png)
+![gameurl==](GUIimg/gameurl_equal.png)
 
 Screenshots when the filter parameter is "genre", filter type is "==", feature is "social"。
-![social==](GUIimg/social==.png)
+![social==](GUIimg/social_equal.png)
 
 Screenshots when the filter parameter is "platform", filter type is "==", feature is "pc (windows)"。
-![platform==](GUIimg/platform==.png)
+![platform==](GUIimg/platform_equal.png)
 
 Screenshots when the filter parameter is "publisher", filter type is "==", feature is "snail games"。
-![publisher==](GUIimg/publisher==.png)
+![publisher==](GUIimg/publisher_equal.png)
 
 Screenshots when the filter parameter is "developer", filter type is "==", feature is "SEGA"。
-![developer==](GUIimg/developer==.png)
+![developer==](GUIimg/developer_equal.png)
 
 Screenshots when the filter parameter is "date", filter type is "==", feature is "2022-10-18"。
-![date==](GUIimg/date==.png)
+![date==](GUIimg/date_equal.png)
 
 Result of different filter type:
 
 Screenshots when the filter parameter is "date", filter type is "==", feature is "2022-10-18"。
-![date==](GUIimg/date==.png)
+![date==](GUIimg/date_equal.png)
 
 Screenshots when the filter parameter is "date", filter type is "~=", feature is "2022"。It display all games in 2022.
-![date~=2022](GUIimg/date~=2022.png)
+![date~=2022](GUIimg/date_2022.png)
 
 Screenshots when the filter parameter is "date", filter type is "!=", feature is "2022-01-12"。
-![date!=2022-01-12](GUIimg/date!=2022-01-12.png)
+![date!=2022-01-12](GUIimg/date_2022-01-12.png)
 
 Screenshots when the filter parameter is "date", filter type is ">", feature is "2024-06-22"。
-![date>2024-06-22](GUIimg/date>2024-06-22.png)
+![date>2024-06-22](GUIimg/date_gre_2024-06-22.png)
 
 Screenshots when the filter parameter is "date", filter type is ">=", feature is "2024-06-22"。
-![date>=2024-06-22](GUIimg/date>=2024-06-22.png)
+![date>=2024-06-22](GUIimg/date_gre2024-06-22.png)
 
 Screenshots when the filter parameter is "date", filter type is "<", feature is "2001-01-04"。
-![date<2001-01-04](GUIimg/date<2001-01-04.png)
+![date<2001-01-04](GUIimg/date_sma_2001-01-04.png)
 
 Screenshots when the filter parameter is "date", filter type is "<=", feature is "2001-01-04"。
-![date<=2001-01-04](GUIimg/date<=2001-01-04.png)
+![date<=2001-01-04](GUIimg/date_smae2001-01-04.png)
 
 Screenshots when the filter parameter is "title", filter type is "==", feature is "overwatch 2"。
-![filtertilt==](GUIimg/filtertilt==.png)
+![filtertilt==](GUIimg/filtertilt_equal.png)
 
 Screenshots when the filter parameter is "title", filter type is "~=", feature is "world"。
-![filtertitle~=](GUIimg/filtertitle~=.png)
+![filtertitle~=](GUIimg/filtertitlecon.png)
 
 Screenshots when the filter parameter is "title", filter type is "!=", feature is "overwatch 2"。
-![title!=](GUIimg/title!=.png)
+![title!=](GUIimg/title_note.png)
 
 Screenshots when the filter parameter is "title", filter type is ">", feature is "XDefiant"。
-![title>XDefiant](GUIimg/title>XDefiant.png)
+![title>XDefiant](GUIimg/title_g_XDefiant.png)
 
 Screenshots when the filter parameter is "title", filter type is ">=", feature is "zula"。
-![filter>=zula](GUIimg/filter>=zula.png)
+![filter>=zula](GUIimg/filter_ge_zula.png)
 
 Screenshots when the filter parameter is "title", filter type is "<", feature is "A.V.A Global"。
-![title<AGlobal](GUIimg/title<AGlobal.png)
+![title<AGlobal](GUIimg/title_s_AGlobal.png)
 
 Screenshots when the filter parameter is "title", filter type is "<=", feature is "A.V.A Global"。
-![title<=AGlobal](GUIimg/title<=AGlobal.png)
+![title<=AGlobal](GUIimg/titl_se_AGlobal.png)
 
 ## Test 3: add/remove/list button
 Steps for add button:
