@@ -104,7 +104,7 @@ Screenshots when the filter parameter is "title", filter type is "<", feature is
 ![title<AGlobal](GUIimg/title_s_AGlobal.png)
 
 Screenshots when the filter parameter is "title", filter type is "<=", feature is "A.V.A Global"。
-![title<=AGlobal](GUIimg/titl_se_AGlobal.png)
+![title<=AGlobal](GUIimg/title_se_AGlobal.png)
 
 ## Test 3: add/remove/list button
 Steps for add button:
