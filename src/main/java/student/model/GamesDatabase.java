@@ -1,11 +1,12 @@
 package student.model;
 
-import org.json.JSONArray;
-import student.model.net.NetUtils;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+
+import org.json.JSONArray;
+
+import student.model.net.NetUtils;
 
 /**
  * This class primarily helps to create the .json database file using the json array string.

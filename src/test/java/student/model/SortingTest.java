@@ -38,7 +38,7 @@ public class SortingTest {
 
     @Test
     public void testSortItemsByReleaseDateAscending() {
-        List<FreeGameItem> sortedItems = Sorting.sortItems(items, "releasedate", true);
+        List<FreeGameItem> sortedItems = Sorting.sortItems(items, "release_date", true);
         assertEquals("2024-01-01", sortedItems.get(0).getReleaseDate());
         assertEquals("2024-01-02", sortedItems.get(1).getReleaseDate());
         assertEquals("2024-01-03", sortedItems.get(2).getReleaseDate());
@@ -46,7 +46,7 @@ public class SortingTest {
 
     @Test
     public void testSortItemsByReleaseDateDescending() {
-        List<FreeGameItem> sortedItems = Sorting.sortItems(items, "releasedate", false);
+        List<FreeGameItem> sortedItems = Sorting.sortItems(items, "release_date", false);
         assertEquals("2024-01-03", sortedItems.get(0).getReleaseDate());
         assertEquals("2024-01-02", sortedItems.get(1).getReleaseDate());
         assertEquals("2024-01-01", sortedItems.get(2).getReleaseDate());

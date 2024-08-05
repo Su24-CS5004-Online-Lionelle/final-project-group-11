@@ -1,4 +1,5 @@
 package student.view;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
@@ -12,8 +13,17 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * ExportButtonView is a JPanel that contains a button for exporting results.
  */
 public class ExportButtonView extends JPanel {
+    /**
+     * The button for exporting results.
+     */
     private JButton exportButton;
+    /**
+     * The button for loading lists.
+     */
     private JButton loadListButton;
+    /**
+     * The file chooser for selecting files.
+     */
     private JFileChooser fileChooser;
 
     /**

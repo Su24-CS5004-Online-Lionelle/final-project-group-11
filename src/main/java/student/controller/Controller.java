@@ -47,6 +47,7 @@ public class Controller {
 
     /**
      * This method gets the details of all games from the gameList and invokes the printGamesList method.
+     * @param formats the format in which the game details should be returned.
      * @return it returns the json strings from the list as output.
      */
     public String getAllGamesList(Formats formats) {
@@ -108,6 +109,7 @@ public class Controller {
 
     /**
      * This method adds the game from temp list after the add button is clicked.
+     * @param name the name of the game to be added.
      */
     public void addGameToList(String name) {
         if (this.model.getGameList().isEmpty() && this.model.checkGameExists(name)) {
@@ -122,6 +124,7 @@ public class Controller {
      * This method removes the game from gameList.
      * The game name is given as input after the remove button is clicked.
      * @param name the game name is given as string.
+     * @return a message indicating the result of the operation.
      */
     public String removeGameFromList(String name){
         if (name == null || name.isEmpty()) {
@@ -146,6 +149,7 @@ public class Controller {
     /**
      * This method invokes the writeRecords method to write the list of games as output.
      * @param games the list of FreeGameItem objects is given as input.
+     * @param format the format in which the game details should be written.
      * @param out the output stream object given as parameter.
      */
     public void printGamesList(List<FreeGameItem> games, Formats format, OutputStream out) {
