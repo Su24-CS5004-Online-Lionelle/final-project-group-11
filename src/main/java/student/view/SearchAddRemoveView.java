@@ -5,14 +5,24 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JPanel;
 
 /**
  * SearchAddRemoveView is a JPanel that contains buttons for search, add, and remove actions.
  */
 public class SearchAddRemoveView extends JPanel{
+    /**
+     * The button for searching items.
+     */
     private JButton searchButton;
+    /**
+     * The button for adding items.
+     */
     private JButton addButton;
+    /**
+     * The button for removing items.
+     */
     private JButton removeButton;
 
     /**

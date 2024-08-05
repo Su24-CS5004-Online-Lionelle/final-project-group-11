@@ -9,10 +9,25 @@ import javax.swing.JPanel;
  * SortFilterView is a JPanel that contains buttons for sorting, filtering, and listing actions.
  */
 public class SortFilterView extends JPanel{
+    /**
+     * The button for sorting items.
+     */
     private JButton sortButton;
+    /**
+     * The button for adding all items.
+     */
     private JButton addAllButton;
+    /**
+     * The button for removing all items.
+     */
     private JButton removeAllButton;
+    /**
+     * The button for filtering items.
+     */
     private JButton filterButton;
+    /**
+     * The button for listing items.
+     */
     private JButton listButton;
 
     /**
@@ -34,16 +49,38 @@ public class SortFilterView extends JPanel{
         add(listButton);
     }
 
+    /**
+     * Gets the sort button.
+     *
+     * @return the JButton for sorting items
+     */
     public JButton getSortButton() {
         return sortButton;
     }
 
+    /**
+     * Gets the add all button.
+     *
+     * @return the JButton for adding all items
+     */
     public JButton getAddAllButton() {
         return addAllButton;
     }
+
+    /**
+     * Gets the remove all button.
+     *
+     * @return the JButton for removing all items
+     */
     public JButton getRemoveAllButton() {
         return removeAllButton;
     }
+
+    /**
+     * Gets the filter button.
+     *
+     * @return the JButton for filtering items
+     */
     public JButton getFilterButton() {
         return filterButton;
     }

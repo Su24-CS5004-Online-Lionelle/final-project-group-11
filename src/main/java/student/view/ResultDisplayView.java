@@ -10,6 +10,9 @@ import javax.swing.JTextArea;
  * It includes a text area for displaying the result.
  */
 public class ResultDisplayView extends JPanel {
+    /**
+     * The text field for showing result.
+     */
     private JTextArea resultArea;
 
     /**
