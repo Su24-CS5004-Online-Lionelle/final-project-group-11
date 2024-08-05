@@ -1,22 +1,20 @@
 package student.model;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
-
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
+import java.util.stream.Collectors;
+
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
-
 import student.model.formatters.Display;
 import student.model.formatters.Formats;
 
@@ -152,7 +150,16 @@ public class ItemModelImpl implements ItemModel{
     public void loadListXml(String filePath) {
         try {
             XmlMapper xmlMapper = new XmlMapper();
-            List<FreeGameItem> loadedList = xmlMapper.readValue(new File(filePath), new TypeReference<>() { });
+            String xmlContent;
+            Path path = Paths.get(filePath);
+            if (isUtf8Encoded(filePath)) {
+                xmlContent = Files.readString(path, StandardCharsets.UTF_8); // UTF-8 encoding
+            }
+            else {
+                Charset encoding = Charset.forName("windows-1252"); // ANSI encoding (Windows-1252)
+                xmlContent = Files.readString(path, encoding);
+            }
+            List<FreeGameItem> loadedList = xmlMapper.readValue(xmlContent, new TypeReference<>() { });
             this.gameList.clear();
             this.gameList.addAll(loadedList);
             this.updateTempGameList(this.gameList);
@@ -160,6 +167,65 @@ public class ItemModelImpl implements ItemModel{
             e.printStackTrace();
             throw new RuntimeException("Failed to load the list from the file.");
         }
+    }
+
+    /**
+     * This method reads the file and converts the contents into a byte array.
+     * @param filePath the file path given as string input.
+     * @return it returns a boolean true if its valid utf-8 encoding. Else, it returns boolean false.
+     * @throws IOException it throws exception if the file cannot be accessed.
+     */
+    private static boolean isUtf8Encoded(String filePath) throws IOException {
+        Path path = Paths.get(filePath);
+        byte[] content = Files.readAllBytes(path);
+        return isValidUtf8(content);
+    }
+
+    /**
+     * This method returns if the file contents are valid utf-8 encoded or not.
+     * @param bytes the contents of the file in byte array.
+     * @return it returns a boolean true or false.
+     */
+    private static boolean isValidUtf8(byte[] bytes) {
+        int i = 0;
+        while (i < bytes.length) {
+            int b = bytes[i] & 0xFF;
+
+            if ((b & 0x80) == 0) {
+                // Single-byte (0x00 to 0x7F) – valid
+                i++;
+            } else if ((b & 0xE0) == 0xC0) {
+                // Two-byte sequence
+                if (i + 1 < bytes.length && (bytes[i + 1] & 0xC0) == 0x80) {
+                    i += 2;
+                } else {
+                    return false;
+                }
+            } else if ((b & 0xF0) == 0xE0) {
+                // Three-byte sequence
+                if (i + 2 < bytes.length &&
+                        (bytes[i + 1] & 0xC0) == 0x80 &&
+                        (bytes[i + 2] & 0xC0) == 0x80) {
+                    i += 3;
+                } else {
+                    return false;
+                }
+            } else if ((b & 0xF8) == 0xF0) {
+                // Four-byte sequence
+                if (i + 3 < bytes.length &&
+                        (bytes[i + 1] & 0xC0) == 0x80 &&
+                        (bytes[i + 2] & 0xC0) == 0x80 &&
+                        (bytes[i + 3] & 0xC0) == 0x80) {
+                    i += 4;
+                } else {
+                    return false;
+                }
+            } else {
+                // Invalid byte
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
