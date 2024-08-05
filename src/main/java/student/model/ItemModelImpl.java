@@ -133,7 +133,16 @@ public class ItemModelImpl implements ItemModel{
     public void loadListJson(String filePath) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            List<FreeGameItem> loadedList = objectMapper.readValue(new File(filePath), new TypeReference<>() { });
+            String jsonContent;
+            Path path = Paths.get(filePath);
+            if (isUtf8Encoded(filePath)) {
+                jsonContent = Files.readString(path, StandardCharsets.UTF_8); // UTF-8 encoding
+            }
+            else {
+                Charset encoding = Charset.forName("windows-1252"); // ANSI encoding (Windows-1252)
+                jsonContent = Files.readString(path, encoding);
+            }
+            List<FreeGameItem> loadedList = objectMapper.readValue(jsonContent, new TypeReference<>() { });
             this.gameList.clear();
             this.gameList.addAll(loadedList);
             this.updateTempGameList(this.gameList);
