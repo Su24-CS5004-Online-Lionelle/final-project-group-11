@@ -136,7 +136,7 @@ public class ItemModelImpl implements ItemModel{
             String jsonContent;
             Path path = Paths.get(filePath);
             if (isUtf8Encoded(filePath)) {
-                jsonContent = Files.readString(path, StandardCharsets.UTF_8); // UTF-8 encoding
+                jsonContent = Files.readString(path, StandardCharsets.UTF_8); // UTF-8 encoding.
             }
             else {
                 Charset encoding = Charset.forName("windows-1252"); // ANSI encoding (Windows-1252)
