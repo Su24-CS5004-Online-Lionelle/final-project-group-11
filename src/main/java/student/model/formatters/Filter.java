@@ -1,10 +1,10 @@
 package student.model.formatters;
 
-import student.model.FreeGameItem;
-
 import java.util.Objects;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
+
+import student.model.FreeGameItem;
 
 public class Filter {
 
@@ -46,6 +46,16 @@ public class Filter {
         return games.filter(game -> getFilter(game, sortType, op, value));
     }
 
+    /**
+     * Evaluates whether a FreeGameItem object matches the filter criteria.
+     *
+     * @param game     The FreeGameItem object to evaluate.
+     * @param sortType The attribute to filter by.
+     * @param op       The operation to apply.
+     * @param value    The value to compare against.
+     * @return true if the game matches the filter criteria, false otherwise.
+     * @throws IllegalArgumentException If an invalid value is provided for comparison.
+     */
     private static boolean getFilter(FreeGameItem game, String sortType, Operations op, String value) {
         try {
             return switch (sortType) {
@@ -67,6 +77,14 @@ public class Filter {
         }
     }
 
+    /**
+     * Filters a string attribute based on the specified operation and value.
+     *
+     * @param str   The string attribute to filter.
+     * @param op    The operation to apply.
+     * @param value The value to compare against.
+     * @return true if the attribute matches the filter criteria, false otherwise.
+     */
     private static boolean filterString(String str, Operations op, String value) {
         str = str.toLowerCase();
         value = value.toLowerCase();
@@ -82,6 +100,14 @@ public class Filter {
         };
     }
 
+    /**
+     * Filters an integer attribute based on the specified operation and value.
+     *
+     * @param intVal The integer attribute to filter.
+     * @param op     The operation to apply.
+     * @param value  The value to compare against.
+     * @return true if the attribute matches the filter criteria, false otherwise.
+     */
     private static boolean filterInt(Integer intVal, Operations op, Integer value) {
         return switch (op) {
             case EQUALS -> Objects.equals(intVal, value);

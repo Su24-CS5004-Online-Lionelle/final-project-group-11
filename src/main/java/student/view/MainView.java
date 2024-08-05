@@ -20,11 +20,29 @@ import student.model.formatters.Formats;
  * It includes panels for command input, action buttons, sort/filter buttons, result display, and export functionality.
  */
 public class MainView extends JFrame {
+    /**
+     * Panel for command input.
+     */
     private CommandInputView commandInputView;
+    /**
+     * Panel for search, add, and remove actions.
+     */
     private SearchAddRemoveView searchAddRemoveView;
+    /**
+     * Panel for sort and filter actions.
+     */
     private SortFilterView sortFilterView;
+    /**
+     * Panel for displaying results.
+     */
     private ResultDisplayView resultDisplayView;
+    /**
+     * Panel for export actions.
+     */
     private ExportButtonView exportButtonView;
+    /**
+     * The controller for handling actions.
+     */
     private Controller controller;
 
     /**
