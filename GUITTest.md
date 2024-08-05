@@ -12,10 +12,10 @@ Expected Outcome: If the game name exists, display the info of the game. If the 
 Actual Outcome: Same as expected.
 Status: Passed
 Screenshots if game exists:
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/searchtest1.png">
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/searchtest2.png">
+![searchtest1](GUIimg/searchtest1.png)
+![searchtest2](GUIimg/searchtest2.png)
 Screenshots if game does not exist:
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/searchtest3.png">
+![searchtest3](GUIimg/searchtest3.png)
 
 ## Test 2: filter button
 Steps:
@@ -29,82 +29,82 @@ Actual Outcome: Same as expected.
 Status: Passed
 
 Screenshots when filter canceled:
-<img src = "/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/filtercancel.png">
+![filtercancel](GUIimg/filtercancel.png)
 
 Result of different filter parameters:
 Screenshots when the filter parameter is "id", filter type is "==", feature is "1"。
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/filterid4.png">
+![filterid4](GUIimg/filterid4.png)
 
 Screenshots when the filter parameter is "title", filter type is "==", feature is "Overwatch 2"。
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/filtertilt==.png">
+![filtertilt==](GUIimg/filtertilt==.png)
 
 Screenshots when the filter parameter is "thumbnail", filter type is "==", feature is "https://www.freetogame.com/g/292/thumbnail.jpg"。
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/thumnail.png">
+![thumnail](GUIimg/thumnail.png)
 
 Screenshots when the filter parameter is "short description", filter type is "==", feature is "Take the battle royale genre and add  mystical powers and you have CRSED: F.O.A.D. (Aka Cuisine Royale: Second Edition)"。
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/shortdes==.png">
+![shortdes==](GUIimg/shortdes==.png)
 
 Screenshots when the filter parameter is "game url", filter type is "==", feature is "https://www.freetogame.com/open/second-life"。
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/gameurl==.png">
+![gameurl==](GUIimg/gameurl==.png)
 
 Screenshots when the filter parameter is "genre", filter type is "==", feature is "social"。
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/social==.png">
+![social==](GUIimg/social==.png)
 
 Screenshots when the filter parameter is "platform", filter type is "==", feature is "pc (windows)"。
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/platform==.png">
+![platform==](GUIimg/platform==.png)
 
 Screenshots when the filter parameter is "publisher", filter type is "==", feature is "snail games"。
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/publisher==.png">
+![publisher==](GUIimg/publisher==.png)
 
 Screenshots when the filter parameter is "developer", filter type is "==", feature is "SEGA"。
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/developer==.png">
+![developer==](GUIimg/developer==.png)
 
 Screenshots when the filter parameter is "date", filter type is "==", feature is "2022-10-18"。
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/date==.png">
+![date==](GUIimg/date==.png)
 
 Result of different filter type:
 
 Screenshots when the filter parameter is "date", filter type is "==", feature is "2022-10-18"。
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/date==.png">
+![date==](GUIimg/date==.png)
 
 Screenshots when the filter parameter is "date", filter type is "~=", feature is "2022"。It display all games in 2022.
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/date~=2022.png">
+![date~=2022](GUIimg/date~=2022.png)
 
 Screenshots when the filter parameter is "date", filter type is "!=", feature is "2022-01-12"。
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/date!=2022-01-12.png">
+![date!=2022-01-12](GUIimg/date!=2022-01-12.png)
 
 Screenshots when the filter parameter is "date", filter type is ">", feature is "2024-06-22"。
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/date >2024-06-22.png">
+![date>2024-06-22](GUIimg/date>2024-06-22.png)
 
 Screenshots when the filter parameter is "date", filter type is ">=", feature is "2024-06-22"。
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/date>=2024-06-22.png">
+![date>=2024-06-22](GUIimg/date>=2024-06-22.png)
 
 Screenshots when the filter parameter is "date", filter type is "<", feature is "2001-01-04"。
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/date<2001-01-04.png">
+![date<2001-01-04](GUIimg/date<2001-01-04.png)
 
 Screenshots when the filter parameter is "date", filter type is "<=", feature is "2001-01-04"。
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/date<=2001-01-04.png">
+![date<=2001-01-04](GUIimg/date<=2001-01-04.png)
 
 Screenshots when the filter parameter is "title", filter type is "==", feature is "overwatch 2"。
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/filtertilt==.png">
+![filtertilt==](GUIimg/filtertilt==.png)
 
 Screenshots when the filter parameter is "title", filter type is "~=", feature is "world"。
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/filtertitle~=.png">
+![filtertitle~=](GUIimg/filtertitle~=.png)
 
 Screenshots when the filter parameter is "title", filter type is "!=", feature is "overwatch 2"。
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/title!=.png">
+![title!=](GUIimg/title!=.png)
 
 Screenshots when the filter parameter is "title", filter type is ">", feature is "XDefiant"。
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/title>XDefiant.png">
+![title>XDefiant](GUIimg/title>XDefiant.png)
 
 Screenshots when the filter parameter is "title", filter type is ">=", feature is "zula"。
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/filter>=zula.png">
+![filter>=zula](GUIimg/filter>=zula.png)
 
 Screenshots when the filter parameter is "title", filter type is "<", feature is "A.V.A Global"。
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/title<A.V.A Global.png">
+![title<AGlobal](GUIimg/title<AGlobal.png)
 
 Screenshots when the filter parameter is "title", filter type is "<=", feature is "A.V.A Global"。
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/filter<=A.V.A Global.png">
+![title<=AGlobal](GUIimg/title<=AGlobal.png)
 
 ## Test 3: add/remove/list button
 Steps for add button:
@@ -118,16 +118,16 @@ Actual Outcome: Same as expected.
 Status: Passed
 
 Screenshots of adding "Overwatch 2" and choose json as display format.
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/listjson.png">
+![alt text](GUIimg/listjson.png)
 
 Screenshots of adding "Overwatch 2" and choose csv as display format.
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/listcsv.png">
+![alt text](GUIimg/listcsv.png)
 
 Screenshots of adding "Overwatch 2" and choose xml as display format.
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/llistxml.png">
+![alt text](GUIimg/llistxml.png)
 
 Screenshots of adding "Overwatch 2" and choose pretty as display format.
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/listpretty.png">
+![alt text](GUIimg/listpretty.png)
 
 
 Steps for remove button:
@@ -140,7 +140,7 @@ Expected Outcome: When click the list, display the game not removed.
 Actual Outcome: Same as expected.
 Status: Passed
 Screenshots of removing "Overwatch 2" from the list.
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/removeresult.png">
+![alt text](GUIimg/removeresult.png)
 
 ## Test 4: Add all/Remove all button
 Steps for Add All button:
@@ -152,9 +152,9 @@ Actual Outcome: Same as expected.
 Status: Passed
 
 Screenshot when filtered id<=2 and clicked add all.
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/addall1.png">
+![alt text](GUIimg/addall1.png)
 Screenshot when filtered id<=2, clicked add all, and click list.
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/addall2.png">
+![alt text](GUIimg/addall2.png)
 
 
 Steps for Remove All button:
@@ -165,10 +165,10 @@ Actual Outcome: Same as expected.
 Status: Passed
 
 Screenshot when clicked removed all and the game list is not empty.
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/removeall.png">
+![alt text](GUIimg/removeall.png)
 
 Screenshot when clicked removed all but the game list is already empty.
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/removeallempty.png">
+![alt text](GUIimg/removeallempty.png)
 
 ## Test 5: Sort button
 Steps:
@@ -181,46 +181,39 @@ Actual Outcome: Same as expected.
 Status: Passed
 
 Screenshot when sort canceled:
-<img src = "/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/sortnull.png">
+![alt text](GUIimg/sortnull.png)
 
 Result of different sort parameters:
 
-Screenshots when sort canceled:
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/sortnull.png">
-
 Screenshots when the sort parameter is "id", filter type is "ascending".
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/sortida.png">
-
+![alt text](GUIimg/sortida.png)
 Screenshots when the sort parameter is "id", filter type is "descending".
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/sortidd.png">
+![alt text](GUIimg/sortidd.png)
 
 Screenshots when the sort parameter is "title", filter type is "ascending".
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/sorttitlea.png">
+![alt text](GUIimg/sorttitlea.png)
 Screenshots when the sort parameter is "title", filter type is "descending".
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/sorttitled.png">
+![alt text](GUIimg/sorttitled.png)
 
 Screenshots when the sort parameter is "genre", filter type is "ascending".
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/sortgenrea.png">
+![alt text](GUIimg/sortgenrea.png)
 Screenshots when the sort parameter is "genre", filter type is "descending".
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/sortgenred.png">
+![alt text](GUIimg/sortgenred.png)
 
 Screenshots when the sort parameter is "publisher", filter type is "ascending".
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/sortpuba.png">
-
+![alt text](GUIimg/sortpuba.png)
 Screenshots when the sort parameter is "publisher", filter type is "descending".
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/sortpubd.png">
+![alt text](GUIimg/sortpubd.png)
 
 Screenshots when the sort parameter is "developer", filter type is "ascending".
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/sortdeva.png">
-
+![alt text](GUIimg/sortdeva.png)
 Screenshots when the sort parameter is "developer", filter type is "descending".
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/sortdevd.png">
+![alt text](GUIimg/sortdevd.png)
 
 Screenshots when the sort parameter is "release_date", filter type is "ascending".
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/sortdatea.png">
-
+![alt text](GUIimg/sortdatea.png)
 Screenshots when the sort parameter is "release_date", filter type is "descending".
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/sortdated.png">
+![alt text](GUIimg/sortdated.png)
 
 ## Test 5: Load button
 Steps:
@@ -232,9 +225,9 @@ Actual Outcome: Same as expected.
 Status: Passed
 
 Screenshots:
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/loadcsv.png">
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/loadjson.png">
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/loadxml.png">
+![alt text](GUIimg/loadcsv.png)
+![alt text](GUIimg/loadjson.png)
+![alt text](GUIimg/loadxml.png)
 
 ## Test 6: Export button
 Steps:
@@ -247,5 +240,5 @@ Actual Outcome: Same as expected.
 Status: Passed
 
 Screenshots:
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/export_done.png">
-<img src="/Users/lingliu/Documents/Khoury/summer2024/5004/final-project-group-11/GUIimg/exportfile.png">
+![alt text](GUIimg/export_done.png)
+![alt text](GUIimg/exportfile.png)
