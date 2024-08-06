@@ -133,7 +133,7 @@ public class ItemModelImplTest {
                           "release_date" : "2022-10-04",
                           "freetogame_profile_url" : "https://www.freetogame.com/overwatch-2"
                         } ]
-                """.replace(" ", "").replace("\n", "");;
+                """.replace(" ", "").replace("\n", "");
         assertEquals(expectedOutput, output.replace(" ", "").replaceAll("\\r\\n",
                 "\n").replace("\n", ""));
     }
@@ -744,7 +744,7 @@ public class ItemModelImplTest {
                                      Thumbnail URL: thumbnail2
                                      Game URL: gameUrl2
                                      freetogame ProfileURL: freetogameProfileUrl2
-                """.replace(" ", "");;
+                """.replace(" ", "");
         System.setOut(System.out);
         assertEquals(expectedOutput, outContent.toString().replaceAll("\\r\\n",
                 "\n").replace(" ", ""));
