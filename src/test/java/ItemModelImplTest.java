@@ -151,7 +151,7 @@ public class ItemModelImplTest {
         FreeGameItem game1 = new FreeGameItem(1, "Tarisland", "thumbnail1", "shortDescription1", "gameUrl1", "genre1", "platform1", "publisher1", "developer1", "releaseDate1", "freetogameProfileUrl1");
         model.addItem(game1);
         model.removeItem(game1);
-        assertEquals(true, model.getGameList().isEmpty());
+        assertTrue(model.getGameList().isEmpty());
     }
 
     @Test
@@ -552,7 +552,7 @@ public class ItemModelImplTest {
         model.getTempGamesList().addAll(gamesList);
         controller.addAllGamesToList();
         controller.removeAllGamesList();
-        assertEquals(true, model.getGameList().isEmpty());
+        assertTrue(model.getGameList().isEmpty());
     }
 
     @Test
