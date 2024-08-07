@@ -22,7 +22,7 @@ import student.model.formatters.Formats;
 /**
  * ItemModel class to handle the game items.
  */
-public class ItemModelImpl implements ItemModel{
+public class ItemModelImpl implements ItemModel {
 
     /** Game list that contains the free games. */
     private List<FreeGameItem> gameList;
@@ -33,7 +33,7 @@ public class ItemModelImpl implements ItemModel{
     /** List to store the temporary Filtered/Sorted games. */
     private List<FreeGameItem> tempGamesList;
 
-    /** Constructor for the ItemModelImpl class */
+    /** Constructor for the ItemModelImpl class. */
     public ItemModelImpl() {
         this.gameList = new ArrayList<>();
         this.gamesMap = new HashMap<>();
@@ -137,8 +137,7 @@ public class ItemModelImpl implements ItemModel{
             Path path = Paths.get(filePath);
             if (isUtf8Encoded(filePath)) {
                 jsonContent = Files.readString(path, StandardCharsets.UTF_8); // UTF-8 encoding
-            }
-            else {
+            } else {
                 Charset encoding = Charset.forName("windows-1252"); // ANSI encoding (Windows-1252)
                 jsonContent = Files.readString(path, encoding);
             }
@@ -163,8 +162,7 @@ public class ItemModelImpl implements ItemModel{
             Path path = Paths.get(filePath);
             if (isUtf8Encoded(filePath)) {
                 xmlContent = Files.readString(path, StandardCharsets.UTF_8); // UTF-8 encoding
-            }
-            else {
+            } else {
                 Charset encoding = Charset.forName("windows-1252"); // ANSI encoding (Windows-1252)
                 xmlContent = Files.readString(path, encoding);
             }
@@ -212,19 +210,15 @@ public class ItemModelImpl implements ItemModel{
                 }
             } else if ((b & 0xF0) == 0xE0) {
                 // Three-byte sequence
-                if (i + 2 < bytes.length &&
-                        (bytes[i + 1] & 0xC0) == 0x80 &&
-                        (bytes[i + 2] & 0xC0) == 0x80) {
+                if (i + 2 < bytes.length && (bytes[i + 1] & 0xC0) == 0x80 && (bytes[i + 2] & 0xC0) == 0x80) {
                     i += 3;
                 } else {
                     return false;
                 }
             } else if ((b & 0xF8) == 0xF0) {
                 // Four-byte sequence
-                if (i + 3 < bytes.length &&
-                        (bytes[i + 1] & 0xC0) == 0x80 &&
-                        (bytes[i + 2] & 0xC0) == 0x80 &&
-                        (bytes[i + 3] & 0xC0) == 0x80) {
+                if (i + 3 < bytes.length && (bytes[i + 1] & 0xC0) == 0x80 && (bytes[i + 2] & 0xC0) == 0x80
+                        && (bytes[i + 3] & 0xC0) == 0x80) {
                     i += 4;
                 } else {
                     return false;
@@ -253,16 +247,16 @@ public class ItemModelImpl implements ItemModel{
                 String title = nextLine[1];
                 String thumbnail = nextLine[2];
                 String description = nextLine[3];
-                String game_url = nextLine[4];
+                String gameUrl = nextLine[4];
                 String genre = nextLine[5];
                 String platform = nextLine[6];
                 String publisher = nextLine[7];
                 String developer = nextLine[8];
-                String release_date = nextLine[9];
-                String freeGame_url = nextLine[10];
+                String releaseDate = nextLine[9];
+                String freeGameUrl = nextLine[10];
 
-                FreeGameItem item = new FreeGameItem(id, title, thumbnail, description, game_url,
-                        genre, platform, publisher, developer, release_date, freeGame_url);
+                FreeGameItem item = new FreeGameItem(id, title, thumbnail, description, gameUrl,
+                        genre, platform, publisher, developer, releaseDate, freeGameUrl);
                 items.add(item);
             }
         } catch (IOException | CsvException e) {
@@ -286,17 +280,17 @@ public class ItemModelImpl implements ItemModel{
         if (file.exists() && file.length() == 0) {
             GamesDatabase instance = new GamesDatabase(); // creates the json database.
         }
-        ItemModelImpl ItemModelObj = new ItemModelImpl();
+        ItemModelImpl itemModelObj = new ItemModelImpl();
         try {
             File jsonFile = new File(database);
             ObjectMapper objectMapper = new ObjectMapper();
             Set<FreeGameItem> recordsSet = objectMapper.readValue(jsonFile, new TypeReference<>() { });
-            ItemModelObj.gamesMap= recordsSet.stream().collect(Collectors.toMap(item -> item.getTitle().toLowerCase(),
-                    item->item));
+            itemModelObj.gamesMap = recordsSet.stream().collect(Collectors.toMap(item -> item.getTitle().toLowerCase(),
+                    item -> item));
         } catch (Exception e) {
             System.out.println("Cannot create an instance");
         }
-        return ItemModelObj;
+        return itemModelObj;
 
     }
 
@@ -305,7 +299,7 @@ public class ItemModelImpl implements ItemModel{
      * @param name the game name given as string.
      * @return it returns the FreeGameItem object associated with that game name.
      */
-    public FreeGameItem SearchByName(String name) {
+    public FreeGameItem searchByName(String name) {
         return this.gamesMap.get(name.toLowerCase());
     }
 

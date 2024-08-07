@@ -9,10 +9,9 @@ import org.json.JSONObject;
 
 /**
  * A series of classes to help with pulling data from https://www.freetogame.com.
- *
  * You can read more about the API at https://www.freetogame.com/api.
  */
-public class NetUtils {
+public final class NetUtils {
     /**
      * Base URL for the API request.
      */

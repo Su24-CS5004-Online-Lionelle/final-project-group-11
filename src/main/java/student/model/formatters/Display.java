@@ -13,7 +13,7 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.Collection;
 
-public class Display {
+public final class Display {
 
     /**
      * Private constructor to prevent instantiation.

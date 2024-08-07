@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 
 import student.model.FreeGameItem;
 
-public class Filter {
+public final class Filter {
 
     private Filter() {
         // Private constructor to prevent instantiation

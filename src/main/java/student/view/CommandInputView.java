@@ -8,7 +8,7 @@ import javax.swing.JTextField;
 /**
  * CommandInputView is a JPanel that contains a text field for entering commands.
  */
-public class CommandInputView extends JPanel{
+public class CommandInputView extends JPanel {
     /**
      * The text field for entering commands.
      */
