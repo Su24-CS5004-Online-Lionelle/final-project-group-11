@@ -233,7 +233,6 @@ class SortFilterView {
     MainView --> Controller : uses
     Filter --> Operations : uses
     Display --> Formats : uses
-    Display --> Sorting : uses
     ItemModelImpl --> FreeGameItem : contains
     XmlWrapper --> FreeGameItem : contains
 
