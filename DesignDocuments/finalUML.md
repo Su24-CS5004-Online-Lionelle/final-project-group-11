@@ -236,8 +236,6 @@ class SortFilterView {
     Display --> Sorting : uses
     ItemModelImpl --> FreeGameItem : contains
     XmlWrapper --> FreeGameItem : contains
-    NetUtils --> FreeGameItem : uses
-    NetUtils --> ItemModelImpl : uses
-    
+
     
     ```
