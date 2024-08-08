@@ -222,7 +222,6 @@ class SortFilterView {
     Controller --> Filter : uses
     Controller --> Sorting : uses
     Controller --> NetUtils : uses
-    Controller --> XmlWrapper : uses
     Controller --> GamesDatabase : uses
     ItemModelImpl --> ItemModel : implements
     MainView --> CommandInputView : contains
@@ -233,8 +232,9 @@ class SortFilterView {
     MainView --> Controller : uses
     Filter --> Operations : uses
     Display --> Formats : uses
+    Display --> XmlWrapper : uses
     ItemModelImpl --> FreeGameItem : contains
-    XmlWrapper --> FreeGameItem : contains
+  
 
-    
+
     ```
