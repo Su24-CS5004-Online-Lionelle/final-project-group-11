@@ -37,7 +37,7 @@ This project retrieves information about free games from the API (https://www.fr
 
 ### Design Documents and Manuals
 
-- Design Document： [Design Document](link design doc)
+- Design Document： [Design Document](DesignDocuments/finalUML.md)
 - User Manual： [User Manual](Manual/README.md)
 
 ### How to Run the Application
