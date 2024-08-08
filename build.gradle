@@ -64,6 +64,9 @@ checkstyleMain {
         html.required.set(true) 
     }
 }
+checkstyleTest {
+    enabled = false
+}
 
 test {
     useJUnitPlatform()

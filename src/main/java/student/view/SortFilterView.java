@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 /**
  * SortFilterView is a JPanel that contains buttons for sorting, filtering, and listing actions.
  */
-public class SortFilterView extends JPanel{
+public class SortFilterView extends JPanel {
     /**
      * The button for sorting items.
      */

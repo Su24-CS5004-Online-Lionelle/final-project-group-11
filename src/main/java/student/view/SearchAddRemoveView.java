@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 /**
  * SearchAddRemoveView is a JPanel that contains buttons for search, add, and remove actions.
  */
-public class SearchAddRemoveView extends JPanel{
+public class SearchAddRemoveView extends JPanel {
     /**
      * The button for searching items.
      */

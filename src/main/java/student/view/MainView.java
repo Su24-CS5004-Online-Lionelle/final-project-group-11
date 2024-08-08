@@ -49,6 +49,7 @@ public class MainView extends JFrame {
      * Constructs a new MainView.
      * Sets the title, default close operation, size, and layout of the frame.
      * Initializes and adds the various panels to the frame.
+     * @param obj the instance of Controller is given as input.
      */
     public MainView(Controller obj) {
         this.controller = obj;
@@ -92,8 +93,7 @@ public class MainView extends JFrame {
         String hostname = commandInputView.getCommandText();
         if (hostname == null || hostname.isEmpty()) {
             resultDisplayView.setResultText("Nothing to Search");
-        }
-        else {
+        } else {
             resultDisplayView.setResultText(this.controller.getSingleGame(hostname));
         }
     }
@@ -126,6 +126,7 @@ public class MainView extends JFrame {
             case "XML" -> resultDisplayView.setResultText(this.controller.getAllGamesList(Formats.XML));
             case "CSV" -> resultDisplayView.setResultText(this.controller.getAllGamesList(Formats.CSV));
             case "PRETTY" -> resultDisplayView.setResultText(this.controller.getAllGamesList(Formats.PRETTY));
+            default -> throw new IllegalStateException("Unexpected value: " + input);
         }
     }
 
@@ -157,8 +158,8 @@ public class MainView extends JFrame {
 
         String parameterValue = JOptionPane.showInputDialog(searchAddRemoveView.getRemoveButton(),
                 "Enter the value:", "Filter Value", JOptionPane.PLAIN_MESSAGE);
-        if (selectedValue != null && selectedValue2 != null && parameterValue != null &&
-                !parameterValue.isEmpty()) {
+        if (selectedValue != null && selectedValue2 != null && parameterValue != null
+                && !parameterValue.isEmpty()) {
             String fullString = selectedValue + selectedValue2 + parameterValue;
             resultDisplayView.setResultText(this.controller.filterGames(fullString));
         } else {
@@ -224,17 +225,20 @@ public class MainView extends JFrame {
             String extension = extensions[0].toLowerCase();
     
             Formats format;
-            switch (extension) {
-                case "xml" -> format = Formats.XML;
-                case "json" -> format = Formats.JSON;
-                case "csv" -> format = Formats.CSV;
-                case "txt" -> format = Formats.PRETTY;
-                default -> {
-                    JOptionPane.showMessageDialog(this, "Unsupported file format.", "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
+            if (extension.equals("xml")) {
+                format = Formats.XML;
+            } else if (extension.equals("csv")) {
+                format = Formats.CSV;
+            } else if (extension.equals("json")) {
+                format = Formats.JSON;
+            } else if (extension.equals("pretty")) {
+                format = Formats.PRETTY;
+            } else {
+                JOptionPane.showMessageDialog(this, "Unsupported file format.",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                return;
             }
-    
+
             String fileName = fileToSave.getAbsolutePath();
             if (!fileName.toLowerCase().endsWith("." + extension)) {
                 fileToSave = new File(fileName + "." + extension);

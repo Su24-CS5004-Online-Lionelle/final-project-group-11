@@ -77,9 +77,9 @@ public class ItemModelImplTest {
         model.addItem(game1);
 
         // Search for the game with different cases
-        FreeGameItem result1 = model.SearchByName("game1");
-        FreeGameItem result2 = model.SearchByName("GAME1");
-        FreeGameItem result3 = model.SearchByName("GaMe1");
+        FreeGameItem result1 = model.searchByName("game1");
+        FreeGameItem result2 = model.searchByName("GAME1");
+        FreeGameItem result3 = model.searchByName("GaMe1");
 
         // Verify the search results are the same
         assertEquals(game1, result1, "The search should return the correct game (case-insensitive).");

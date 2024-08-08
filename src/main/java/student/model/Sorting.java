@@ -4,7 +4,15 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Sorting {
+public final class Sorting {
+
+    /**
+     * default constructor.
+     */
+    private Sorting() {
+        // Private constructor to prevent instantiation
+        throw new AssertionError("Utility class should not be instantiated.");
+    }
     /**
      * Sorts a list of FreeGameItems based on the specified field and order.
      *
@@ -13,7 +21,7 @@ public class Sorting {
      * @param ascending true for ascending order, false for descending
      * @return sorted list of FreeGameItem
      */
-    public static List<FreeGameItem> sortItems(List<FreeGameItem>  items, String field,boolean ascending){
+    public static List<FreeGameItem> sortItems(List<FreeGameItem>  items, String field, boolean ascending) {
         Comparator<FreeGameItem> comparator = getComparatorByField(field);
 
         if (!ascending) {
@@ -31,7 +39,7 @@ public class Sorting {
      * @param field the field to create the comparator for
      * @return a comparator for the field
      */
-    private static Comparator<FreeGameItem> getComparatorByField(String field){
+    private static Comparator<FreeGameItem> getComparatorByField(String field) {
         switch (field.toLowerCase()) {
             case "id":
                 return Comparator.comparing(FreeGameItem::getId);

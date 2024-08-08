@@ -36,7 +36,7 @@ public class Controller {
      */
     public String getSingleGame(String gameName) {
         OutputStream out = new ByteArrayOutputStream();
-        FreeGameItem game = this.model.SearchByName(gameName);
+        FreeGameItem game = this.model.searchByName(gameName);
         if (game == null) {
             return "No game found";
         }
@@ -114,8 +114,7 @@ public class Controller {
     public void addGameToList(String name) {
         if (this.model.getGameList().isEmpty() && this.model.checkGameExists(name)) {
             this.model.addItem(this.model.getGameFromMap(name));
-        }
-        else if (this.model.checkGameExists(name) && !this.model.checkGameList(name)) {
+        } else if (this.model.checkGameExists(name) && !this.model.checkGameList(name)) {
             this.model.addItem(this.model.getGameFromMap(name));
         }
     }
@@ -126,11 +125,10 @@ public class Controller {
      * @param name the game name is given as string.
      * @return a message indicating the result of the operation.
      */
-    public String removeGameFromList(String name){
+    public String removeGameFromList(String name) {
         if (name == null || name.isEmpty()) {
             return "No Name given";
-        }
-        else if (!name.isEmpty() && model.checkGameList(name)) {
+        } else if (!name.isEmpty() && model.checkGameList(name)) {
             this.model.removeItem(this.model.getGameFromMap(name));
             return "Removed Game";
         }
@@ -162,10 +160,10 @@ public class Controller {
      * @return it returns the filtered games in json format as output.
      */
     public String filterGames(String filterString) {
-        List <FreeGameItem> filteredGamesList = Filter.filterSingle(this.model.getItems().stream(),
+        List<FreeGameItem> filteredGamesList = Filter.filterSingle(this.model.getItems().stream(),
                 filterString).toList();
         this.model.updateTempGameList(filteredGamesList);
-        OutputStream out = new ByteArrayOutputStream();;
+        OutputStream out = new ByteArrayOutputStream();
         printGamesList(this.model.getTempGamesList(), Formats.JSON, out);
         return out.toString();
     }
@@ -173,10 +171,11 @@ public class Controller {
     /**
      * This method sorts the games and updates the temporary games list.
      * @param column the column on which the sorting needs to be performed.
+     * @param order the boolean true or false is given as input for determining the sorting order.
      * @return it returns the sorted games in json format as output.
      */
     public String sortGames(String column, Boolean order) {
-        List <FreeGameItem> sortedGamesList = Sorting.sortItems(this.model.getTempGamesList(), column,
+        List<FreeGameItem> sortedGamesList = Sorting.sortItems(this.model.getTempGamesList(), column,
                 order);
         if (this.model.getTempGamesList().isEmpty()) {
             return "Empty list";
@@ -195,11 +194,9 @@ public class Controller {
     public void loadGamesList(String filePath, String extension) {
         if (extension.equals("json")) {
             this.model.loadListJson(filePath);
-        }
-        else if (extension.equals("xml")) {
+        } else if (extension.equals("xml")) {
             this.model.loadListXml(filePath);
-        }
-        else if (extension.equals("csv")) {
+        } else if (extension.equals("csv")) {
             this.model.loadListCsv(filePath);
         }
     }
